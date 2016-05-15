@@ -25,10 +25,16 @@
 ##### [6、android-UniversalMusicPlayer：Google音乐播放器](https://github.com/flyou/Girls)
 ##### [7、Bingo:IT阅读App。可以学习更多开源技术，作者徐福生。](https://github.com/sfsheng0322/Bingo)
 ##### [8、BuildingBlocks积木：知乎日报，作者也是：android-tips发起者](https://github.com/tangqi92/BuildingBlocks)
-##### [9、Meizhi：Gank.io系列。Functional programming, RxJava & Retrofit...](https://github.com/drakeet/Meizhi)
+##### [9、ouNews：新闻阅读，MVP，RxJava，Retrofit，Glide，Vitamio，GreenDao](https://github.com/oubowu/OuNews)
 ##### [10、MicroReader：微阅。RxJava & Retrofit，RxBus](https://github.com/YiuChoi/MicroReader)
 ##### [11、NBAPlus：RxJava and EventBus](https://github.com/YiuChoi/MicroReader)
 ##### [12、PhotoNote：照片笔记。Dagger2，RxXXX，dex分包，6.0权限适配，DNK,aidl](https://github.com/yydcdut/PhotoNoter)
 ##### [13、SimplifyReader：简阅。ButterKnife，OkHttp，Volley,Event-Bus](https://github.com/SkillCollege/SimplifyReader)，
 ##### [14、ouNews：新闻阅读，MVP，RxJava，Retrofit，Glide，Vitamio，GreenDao](https://github.com/oubowu/OuNews)
+
+##### [14、Meizhi：Gank.io系列。Functional programming, RxJava & Retrofit...](https://github.com/drakeet/Meizhi)
+
+##### [15、Gank：干货集中营。](https://github.com/dongjunkun/GanK)
+
+##### [16、EasyGank：Gank.io。Rx,Retrofit，OkHttp，Glide，Reservoir](https://github.com/CaMnter/EasyGank)
 

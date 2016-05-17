@@ -14,6 +14,17 @@
 #####[Android-Tips：很齐全的学习资料](https://github.com/tangqi92/Android-Tips)
 ##### [Android-Next：公共组件库](https://github.com/mcxiaoke/Android-Next)
 ##### [RxDoc：Rx文档](https://github.com/mcxiaoke/RxDocs)
+
+##### [RxJavaSamples：RxJava使用场景](https://github.com/THEONE10211024/RxJavaSamples)
+
+##### [Awesome-RxJava：Rx相关学习资料，博客](https://github.com/lzyzsd/Awesome-RxJava)
+
+##### [android-open-project-analysis：Android开源项目解析。](https://github.com/android-cn/android-open-project-analysis)
+
+##### [android_design_patterns_analysis：Android源码设计模式分析](https://github.com/simple-android-framework/android_design_patterns_analysis)
+
+##### [android-open-source-project-cracking](https://github.com/wingjay/android-open-source-project-cracking)
+
 ---
 ## 完整项目
 ##### [1、TranslateApp：实现划词翻译的开软应用](https://github.com/maoruibin/TranslateApp)

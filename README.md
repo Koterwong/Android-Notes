@@ -1,4 +1,7 @@
 ## Github学习资料链接
+
+#### [open-source-android-apps：收集Android开源Ap](open-source-android-apps)
+
 ##### [android-common：Android通用库](https://github.com/Trinea/android-common)
 ##### [android-tech-frontier：Android开发技术前线](https://github.com/hehonghui/android-tech-frontier)
 ##### [android-best-practices：Android最佳实践](https://github.com/futurice/android-best-practices)
@@ -18,6 +21,8 @@
 ##### [RxJavaSamples：RxJava使用场景](https://github.com/THEONE10211024/RxJavaSamples)
 
 ##### [Awesome-RxJava：Rx相关学习资料，博客](https://github.com/lzyzsd/Awesome-RxJava)
+
+##### [rxjava_for_java:RxJava的使用Demo](https://github.com/cn-ljb/rxjava_for_android)
 
 ##### [android-open-project-analysis：Android开源项目解析。](https://github.com/android-cn/android-open-project-analysis)
 
@@ -52,6 +57,8 @@
 ###### [17、AndroidReview：Android面试复习](https://github.com/envyfan/AndroidReview)
 
 ##### [18、Android-Demo：android应用开发Demo](https://github.com/novoda/android-demos)
+
+#### [AndroidLife：题主个人总结](https://github.com/CaMnter/AndroidLife)
 
 ## Java
 

@@ -1,5 +1,7 @@
+package com.koterwong.basis.ClassTools;
 
 import android.annotation.SuppressLint;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -13,34 +15,39 @@ public class DateUtils {
 
     /**
      * yyyy-MM-dd HH:mm:ss
+     *
      * @return
      */
     @SuppressLint("SimpleDateFormat")
-    public static String getNowYMDHMSTime(){
+    public static String getNowYMDHMSTime() {
 
         SimpleDateFormat mDateFormat = new SimpleDateFormat(
                 "yyyy-MM-dd HH:mm:ss");
         String date = mDateFormat.format(new Date());
         return date;
     }
+
     /**
      * MM-dd HH:mm:ss
+     *
      * @return
      */
     @SuppressLint("SimpleDateFormat")
-    public static String getNowMDHMSTime(){
+    public static String getNowMDHMSTime() {
 
         SimpleDateFormat mDateFormat = new SimpleDateFormat(
                 "MM-dd HH:mm:ss");
         String date = mDateFormat.format(new Date());
         return date;
     }
+
     /**
-     * MM-dd
+     * yyyy-MM-dd
+     *
      * @return
      */
     @SuppressLint("SimpleDateFormat")
-    public static String getNowYMD(){
+    public static String getNowYMD() {
 
         SimpleDateFormat mDateFormat = new SimpleDateFormat(
                 "yyyy-MM-dd");
@@ -50,11 +57,12 @@ public class DateUtils {
 
     /**
      * yyyy-MM-dd
+     *
      * @param date
      * @return
      */
     @SuppressLint("SimpleDateFormat")
-    public static String getYMD(Date date){
+    public static String getYMD(Date date) {
 
         SimpleDateFormat mDateFormat = new SimpleDateFormat(
                 "yyyy-MM-dd");
@@ -62,6 +70,7 @@ public class DateUtils {
         return dateS;
     }
 
+    @SuppressLint("SimpleDateFormat")
     public static String dayForWeek(String pTime) {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         Calendar c = Calendar.getInstance();

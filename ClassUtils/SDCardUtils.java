@@ -1,35 +1,27 @@
-package com.zhy.utils;
+package com.koterwong.basis.ClassTools;
 
-import java.io.File;
-
+import android.os.Build;
 import android.os.Environment;
 import android.os.StatFs;
 
+import java.io.File;
+
 /**
- * SD卡相关的辅助类
- *
- * @author koterwong
+ * Author：Koterwong，
+ * Date：2016/5/21 20:48
+ * Description:
  */
 public class SDCardUtils {
-
-    private SDCardUtils() {
-        throw new UnsupportedOperationException("cannot be instantiated");
-    }
-
     /**
-     * 判断SDCard是否可用
-     *
-     * @return
+     * 判断SD卡是否挂载
      */
-    public static boolean isSDCardEnable() {
-        return Environment.getExternalStorageState().equals(
-                Environment.MEDIA_MOUNTED);
+    public static boolean isSDCardAvailable() {
+        return Environment.MEDIA_MOUNTED
+                .equals(Environment.getExternalStorageState());
     }
 
     /**
      * 获取SD卡路径
-     *
-     * @return
      */
     public static String getSDCardPath() {
         return Environment.getExternalStorageDirectory().getAbsolutePath()
@@ -38,27 +30,24 @@ public class SDCardUtils {
 
     /**
      * 获取SD卡的剩余容量 单位byte
-     *
-     * @return
      */
     public static long getSDCardAllSize() {
-        if (isSDCardEnable()) {
-			File path = Environment.getExternalStorageDirectory();
-			StatFs stat = new StatFs(path.getPath());
-			long blockSize;
-			long totalBlocks;
-			long availableBlocks;
-			//判断当前版本是否是4.3或以上
-			if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2){
-        		blockSize = stat.getBlockSizeLong();
-				totalBlocks = stat.getBlockCountLong();
-				availableBlocks = stat.getAvailableBlocksLong();
-			}
-			else{
-        		blockSize = stat.getBlockSize();
-				totalBlocks = stat.getBlockCount();
-				availableBlocks = stat.getAvailableBlocks();
-			}
+        if (isSDCardAvailable()) {
+            File path = Environment.getExternalStorageDirectory();
+            StatFs stat = new StatFs(path.getPath());
+            long blockSize;
+            long totalBlocks;
+            long availableBlocks;
+            //判断当前版本是否是4.3或以上
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2) {
+                blockSize = stat.getBlockSizeLong();
+                totalBlocks = stat.getBlockCountLong();
+                availableBlocks = stat.getAvailableBlocksLong();
+            } else {
+                blockSize = stat.getBlockSize();
+                totalBlocks = stat.getBlockCount();
+                availableBlocks = stat.getAvailableBlocks();
+            }
             return blockSize * availableBlocks;
         }
         return 0;
@@ -67,7 +56,7 @@ public class SDCardUtils {
     /**
      * 获取指定路径所在空间的剩余可用容量字节数，单位byte
      *
-     * @param filePath
+     * @param filePath filePath
      * @return 容量字节 SDCard可用空间，内部存储可用空间
      */
     public static long getFreeBytes(String filePath) {

@@ -1,4 +1,4 @@
-package com.koterwong.weather.utils;
+package com.koterwong.basis.ClassTools;
 
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;

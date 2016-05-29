@@ -1,3 +1,5 @@
+package com.koterwong.basis.ClassTools;
+
 import android.content.Context;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;

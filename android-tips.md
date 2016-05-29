@@ -1,4 +1,5 @@
 - TextView字放大后字体变细：`android:fontFamily="sans-serif-light"`
+- TextView.setError()
 
 
 - 直接发送短信API
@@ -17,11 +18,19 @@ for (String string : sms) {
 }
 ```
 
-- 设置EditText字体`mEditText.setTypeface(Typeface.createFromAssets(getAssets(),1.ttf)`
+- ##### 设置EditText字体`mEditText.setTypeface(Typeface.createFromAssets(getAssets(),1.ttf)`
 
 
 - ftb设置背景色`backgroundTint`解决阴影`borderWidth="0"`5.0以上设置`dimen`
 
 
 - 给控件设置`clickable="true"`则该控件就会消费点击事件。
+- TextView你真的了解吗？[我是链接](http://blog.csdn.net/sdkfjksf/article/details/51317204)
+
+
+- 判断当前线程是否在主线程
+
+  ```java
+  Looper.myLooper() == Looper.getMainLooper();
+  ```
 

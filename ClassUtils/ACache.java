@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.afinal.simplecache;
+package com.koterwong.basis.ClassTools;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;

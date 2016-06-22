@@ -1,6 +1,18 @@
-- TextView字放大后字体变细：`android:fontFamily="sans-serif-light"`
-- TextView.setError()
+## View相关
 
+- `view.isShown()`判断view和父View是在显示。
+
+
+- 给View控件设置`clickable="true"`则该控件就会消费点击事件。
+- View类中的`callOnClick()，performClick()，performLongClick()，`用于触发View的点击事件。
+#### TextView、EditText
+- TextView字放大后字体变细：`android:fontFamily="sans-serif-light"`
+- TextView.setError()。可以设置textView的错误图片，和弹出错误信息。
+- TextView：`append(CharSequence)`方法，添加文本。一些特殊文本直接用+连接会变成String
+- TextView你真的了解吗？[我是链接](http://blog.csdn.net/sdkfjksf/article/details/51317204)
+- 设置EditText字体`mEditText.setTypeface(Typeface.createFromAssets(getAssets(),1.ttf)`
+- fab设置背景色`backgroundTint`。
+## 系统相关
 
 - 直接发送短信API
 
@@ -17,20 +29,6 @@ for (String string : sms) {
   sm.sendTextMessage(phone, null, string, null, null);
 }
 ```
+- 放个知乎连接[Android开发工具和技巧](https://www.zhihu.com/question/27140400)
 
-- ##### 设置EditText字体`mEditText.setTypeface(Typeface.createFromAssets(getAssets(),1.ttf)`
-
-
-- ftb设置背景色`backgroundTint`解决阴影`borderWidth="0"`5.0以上设置`dimen`
-
-
-- 给控件设置`clickable="true"`则该控件就会消费点击事件。
-- TextView你真的了解吗？[我是链接](http://blog.csdn.net/sdkfjksf/article/details/51317204)
-
-
-- 判断当前线程是否在主线程
-
-  ```java
-  Looper.myLooper() == Looper.getMainLooper();
-  ```
-
+  ​

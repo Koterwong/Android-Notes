@@ -53,7 +53,7 @@ View listView = activity.findViewById(R.id.list_view);
 
 - 第一次被添加到Acticity的声明周期	
 
-`onAttach()->onAttach()->onCreate()->onCreateView()->onActivityCreated()->onStart()->onResume();`
+`onAttach()->onCreate()->onCreateView()->onActivityCreated()->onStart()->onResume();`
 
 ```Java
 MainActivity.onCreate / ☐→

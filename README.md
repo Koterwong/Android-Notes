@@ -4,7 +4,7 @@
 
 [android-open-project:无须介绍](https://github.com/Trinea/android-open-project)
 
-[open-source-android-apps：收集Android开源Ap](open-source-android-apps)
+[open-source-android-apps：收集Android开源Ap](https://github.com/pcqpcq/open-source-android-apps)
 
 [android-common：Android通用库](https://github.com/Trinea/android-common)
 

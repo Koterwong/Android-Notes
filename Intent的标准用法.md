@@ -1,16 +1,3 @@
-#隐示的Intent 
-
-Intent-Fileter指定当前组件要过滤的启动意图。
-Action属性：指定Intent的动作。
-Data属性：指定Uri
-
-- android:scheme   用于指定，Uri的协议部分，例如http部分、tel、content
-- android:host指定主机地址，例如contracts;
-- android:port用于指定端口地址，一般跟在主机地址的后面
-- android:path路径
-- android:mimeType数据类型
-
-
 ## Android系统的Intent
 
 - 启动浏览器

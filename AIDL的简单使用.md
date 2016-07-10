@@ -8,6 +8,7 @@
 
 - Intent
 - BroadcastReceiver
+- 文件
 - AIDL  多个应用程序访问，操作多线程。
 - Binder  多个应用程序访问，不操作多线程
 - Messenger   单个引用程序访问，不操作多线程。

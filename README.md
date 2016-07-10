@@ -6,7 +6,7 @@
 
 [open-source-android-apps：收集Android开源Ap](https://github.com/pcqpcq/open-source-android-apps)
 
-[android-common：Android通用库](https://github.com/Trinea/android-common)
+[TimLiu-Android：总结Android开源项目及库](https://github.com/Tim9Liu9/TimLiu-Android)
 
 [android-tech-frontier：Android开发技术前线](https://github.com/hehonghui/android-tech-frontier)
 
@@ -15,8 +15,6 @@
 [Android-Dev-Favorites：Android开发者收藏夹](https://github.com/ruijun/Android-Dev-Favorites)
 
 [Android_Data：安卓学习资料 ](https://github.com/Freelander/Android_Data)
-
-[TimLiu-Android：总结Android开源项目及库](https://github.com/Tim9Liu9/TimLiu-Android)
 
 [AndroidSdkSourceAnalysis：安卓SDK源码解析](https://github.com/LittleFriendsGroup/AndroidSdkSourceAnalysis)
 

@@ -31,4 +31,3 @@
 
 - Camera：camera包下，5.0之后被废弃
 - CameraDevice：camera2包下，google提供更为全面的相机api。
-

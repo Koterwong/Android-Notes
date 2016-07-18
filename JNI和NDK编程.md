@@ -206,25 +206,25 @@ for(i=1;i<=8;i++){
 }
 ```
 # JNI入门
-jni java本地开发接口，JNI是一种协议，这个协议用来沟通java代码个外部的本地c代码。
-- java调用c/c++代码
-- 外部的c/c++ 代码也可以调用java代码
-#### 为什么要使用jni
+
+JNI的本意是Java Native Interface，它是为了方便Java调用C，C++等本地代码所封装的一层接口。
+
+为什么要使用jni？
+
 - 1、JNI扩展了java 虚拟机的能力, 驱动开发  (wifi-hotspot) 
 - 2、Native code效率高,数学运算,实时渲染的游戏上,音视频处理 (极品飞车,openGL,ffmpeg)
 - 3、复用代码 (文件压缩,人脸识别…)
 - 4、特殊的业务场景，物联网，智能家具。
 - 5、安全策略，反编译。
-#### 什么是交叉编译
-> 在一个平台编译出另一个平台可以执行的 二进制程序。
-- CPU平台：x86  arm 。不同CPU处理的指令集不同。
-- 系统平台: Windows 、 linux 、Max OS
-> 模拟另一个平台的特性去编写代码。`源代码->预编译->编译->链接->可执行程序`
+什么是交叉编译？
 
+在一个平台编译出另一个平台可以执行的 二进制程序。NDK本身提供了这种功能。	
+
+- CPU平台：x86  arm 。不同CPU处理的指令集不同。
+- 系统平台: Windows 、 linux 、Max OS`
 编译工具：
 - NDK： native development kits 。
-- CDT（过时）： C/C++ developer tools    eclipse工具，类似ADT。
-- cygwin：一个模拟器，可以在Windows平台下的Linux命令行。
+- cygwin：一个模拟器，可以在Windows平台下执行Linux命令。
 
 
 ## 编写JNI步骤

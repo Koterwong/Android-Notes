@@ -15,28 +15,32 @@
 - 设置编码：encodeing - utf-8
 
 - Gradle setting - 勾选offline work。不去更新下载  
+  - show methed separator 显示方法分割线 ch 
 
-- show methed separator 显示方法分割线 ch 
+
 
 - f8 单步调试，add to watch
 
-- f7 进入要调试的方法	
+  - f7 进入要调试的方法
 
 - shift + f8(或点击绿色按钮)跳到下一个断点
-	`Franes`方法调用栈
-	`Variables` 变量信息
+  `Franes`方法调用栈
+  `Variables` 变量信息
 
 - 查看方法引用的位置：选中方法->右键->Find Usages
 
 ###常用的快捷键
 
 - Ctrl + J 根据光标所处的位置弹出一些代码模版fori 
-	
-	`ifn` `inn` 判断参数时候等于(不等于)null
-	`fbc` 快速的findViewById
-    `visible` 设置view的显示GONE
-	`Toast` 打印Toast
-	`IntentView` 快速的Intent
+
+  `ifn` `inn` 判断参数时候等于(不等于)null
+  `fbc` 快速的findViewById
+
+   `visible` 设置view的显示GONE
+
+  `Toast` 打印Toast
+  `IntentView` 快速的Intent
+
 - Ctrl + Alt + T 弹出一些包围结构，例如if..else  while  for
 
 - Ctrl ＋ [或]可以跳到大括号的开头结尾
@@ -112,7 +116,7 @@
 - Alt+Shift+C  对比最近修改的代码
 
 - Shift + F6  重构-重命名
- 
+
 - Shift ＋ Click可以关闭文件
 
 - Ctrl＋Shift＋Backspace可以跳转到上次编辑的地方

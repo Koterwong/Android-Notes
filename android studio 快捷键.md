@@ -3,17 +3,12 @@
 ### 设置
 
 - 修改编辑器的字体大小 Setting -> Editor -> Color & Fonts
-
+- 代码提示对大小是否敏感 -> Editot -> General -> CodeCompletion -> Case Sensitive Completion
 - 鼠标悬浮提示：Setting -> Editor || Other -> Show quick doc on mouse move Delay ; 
-
 - 代码自动提示：Setting -> Editor -> Code Completion 注意大小写是否敏感
-
-- 自动导包 ：Editer -> auto import
-
+- 自动导包 ：Editer -> General -> auto import
 - 自动编译： compiler - make potject automatically
-
 - 设置编码：encodeing - utf-8
-
 - Gradle setting - 勾选offline work。不去更新下载  
   - show methed separator 显示方法分割线 ch 
 
@@ -22,12 +17,14 @@
 - f8 单步调试，add to watch
 
   - f7 进入要调试的方法
-
 - shift + f8(或点击绿色按钮)跳到下一个断点
   `Franes`方法调用栈
   `Variables` 变量信息
-
-- 查看方法引用的位置：选中方法->右键->Find Usages
+- 查看方法引用的位置：选中方法->右键->Find Usages。
+- 设置Grandle路径：Build -> Build Tools -> Grandle。
+- 显示方法分割线：Editor -> General -> Appearance -> show method separators。
+- 显示行数：Editor -> General -> Appearance ->show line number。
+- logcat日志自动换行 -> 在logcat日志输出左侧工具栏点击换行图标即可。
 
 ###常用的快捷键
 

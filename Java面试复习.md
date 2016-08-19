@@ -7,7 +7,7 @@
 [Java之美[从菜鸟到高手演变\]之类与对象(三)](http://blog.csdn.net/zhangerqing/article/details/8301934) 
 
 博文的相关的知识点：
-1.对象的创建过程，结合以下代码说明。
+1.对象的创建过程，结合以下代码说明。 
 
 ```Java
 public class Person {

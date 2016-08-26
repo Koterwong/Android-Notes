@@ -1,5 +1,19 @@
 ##android studio 设置和快捷键
 
+### 设置代码风格
+
+可通过Editor->Code Style -> Java设置你喜欢的格式。
+
+个人喜好
+
+Wrapping and Braces  选中 
+
+- Simple Method in one lines 。
+- Simple Class in one lines。
+- Ensure right margin is not exceeded。
+- Extends/implements keyword -> wrap if long
+- Class Annotations Methodd Annotation -> Do not wrap
+
 ### 设置
 
 - 修改编辑器的字体大小 Setting -> Editor -> Color & Fonts

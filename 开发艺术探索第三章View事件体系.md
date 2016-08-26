@@ -1,14 +1,14 @@
 ### View事件体系
 
-##### 1. View的位置参数
+#### 1. View的位置参数
 
 View的位置属性，top、left、right、bottom，是相对于自己的父容器来取值的，在父容器执行完layout方法即可使用getTop、getLeft、getRight、getBottom获取它们的值。另外通过这四个属性可以方便得道View的width和height属性，与之对应的方法分别为getWidth()和getHeight()方法。
 
-在Android3.0以后，View新增了`x`、`y` 、`translationX` 、`translationY` 属性，其中`x` 、`y` 分别对应了View左上角的坐标，这个坐标同样是相对于父容器的，并且`x = left + translationX `  ，需要注意的是，View在平移的过程中，top和left表示的是原始View的位置信息，其值不会反生改变，改变的是`x`、`y` 、`translationX`    、`translationY` 。
+在Android3.0以后，View新增了`x`、`y` 、`translationX` 、`translationY` 属性，其中`x` 、`y` 分别对应了View左上角的坐标，这个坐标同样是相对于父容器的，并且它们之间的关系可以通过`x = left + translationX `公式表示  。需要注意的是，View在平移的过程中，top和left表示的是原始View的位置信息，其值不会反生改变，改变的是`x`、`y` 、`translationX`    、`translationY` 。
 
 如果想获取View在屏幕上的坐标`view.getLocationOnScreen(int[] arr);` 。
 
-##### 2. MotionEvent、TouchSlop、VelocityTracker、GestrueDetector、Scroller
+#### 2. MotionEvent、TouchSlop、VelocityTracker、GestrueDetector
 
 （1）MotionEvent：触控事件
 
@@ -28,6 +28,7 @@ VelocityTracker velocityTracker = VelocityTracker.obtain();
 velocityTracker.addMovement(event);
 //在获取速度前必须调用computeCirrentVelocity方法，获取当前速度的计算时间。
 velocityTracker.computeCurrentVelocity(1000);
+//获取速度，这里需要注意从右想做滑动时速度为负
 velocityTracker.getXVelocity();
 velocityTracker.getYVelocity();
 //当不使用它的时候，进行回收。（场景？）
@@ -36,4 +37,135 @@ velocityTracker.recycle();
 ```
 
 （4）GestureDetector：辅助检验用户的单击、滑动、长按、双击行为。
+
+使用GestureDetector并不复杂，只需要创建GestureDetector对象，并实现onGestureListener接口，最后需要接管View的onTouchEvent事件。
+
+```java
+GestureDetector gestureDetector = new GestureDetector(context, this);
+//解决长按屏幕后无法拖动现象。
+gestureDetector.setIsLongpressEnabled(false);
+//接管onTouchEvent事件
+@Override
+public boolean onTouchEvent(MotionEvent event) {
+    boolean consume = gestureDetector.onTouchEvent(event);
+    return consume;
+}
+```
+onDestureListener有一系列的回调方法，我们可根据回调方法，处理不同的View的事件。
+
+- onSingleTapUp：单击行为，相当于ACTION_DOWN和ACTION_UP的触发。
+- onFling：触摸屏幕，快速滑动松开。一个ACTION_DOWN，多个ACTION_MOVE和一个ACTION_UP触发。
+- onScorll：拖动事件。一个ACTION_DOWN，多个ACTION_MOVE和一个ACTION_UP触发。
+- onLoogPress：长按。
+- onDoubleTap：双击。
+
+在日常的开发中，完全可以不使用onDestrueDetector，监听相关滑动完全可以在onTouchEvent中实现。如果要监听用户的双击行为，可以使用onDoubleTap实现。
+
+#### 3.View的滑动。
+
+（1）使用ScrollTo/ScrollBy
+
+View类提供了`ScrollTo` 和`ScrollBy` 来实现View的滑动，需要注意的是，它们实现View的滑动**实现的是View内容区域的滑动，View本身的位置并没有经过滑动，也就是说不可能将View滑动附近View所在的区域。**
+
+使用`ScrollTo` 和`ScrollBy` 实现View的滑动，需要注意两个重要的参数，`mSrollX`和`mSrollY`这连个参数表示View内容区域滑动的偏移量，仅当View的内容区域在View原位置的左边缘的时候这个值为正。
+
+```java
+/**
+ * 使View滑动的偏移量。如果要实现内容区域向右滑动，那么传入参数的X的值为负。
+ *
+ * Set the scrolled position of your view. This will cause a call to
+ * {@link #onScrollChanged(int, int, int, int)} and the view will be
+ * invalidated.
+ * @param x the x position to scroll to
+ * @param y the y position to scroll to
+ */
+public void scrollTo(int x, int y) {
+    if (mScrollX != x || mScrollY != y) {
+        int oldX = mScrollX;
+        int oldY = mScrollY;
+        mScrollX = x;   //可以看出mScrollX就等于我们传入的参数。   
+        mScrollY = y;
+        invalidateParentCaches();
+        onScrollChanged(mScrollX, mScrollY, oldX, oldY);
+        if (!awakenScrollBars()) {
+            postInvalidateOnAnimation();
+        }
+    }
+}
+/**
+ * 实现相对位置的滑动。同样是向右传负
+ *
+ * Move the scrolled position of your view. This will cause a call to
+ * {@link #onScrollChanged(int, int, int, int)} and the view will be
+ * invalidated.
+ * @param x the amount of pixels to scroll by horizontally
+ * @param y the amount of pixels to scroll by vertically
+ */
+public void scrollBy(int x, int y) {
+    scrollTo(mScrollX + x, mScrollY + y);
+}
+```
+
+（2）使用动画
+
+主要通过View的`translationX`和`translationY`属性来实现View的平移。需要注意的是使用View动画，是对View的影响操作，并不能改变View的属性。使用属性动画，只能兼容到3.0以上，要向兼容到低版本需要使用nineOldAndroid动画库，但是在3.0以下实现的还是View动画。
+
+这里提供一个使用View动画平移之后，同样能响应点击的方案。可以在View平移的目标位置，新建一个和View一模一样的View，在动画执行完成后，将旧的View设置为GONE。
+
+（3）改变布局参数，LayoutParams。
+
+通过改变View的LeftMargin参数，实现View的滑动。
+
+> 这个本提到的实现View的滑动方法不是很全，可参考Android群英传第五章，使用Layout方法和ViewDragHelper。
+
+#### 4.Scroller：弹性滑动对象。
+
+在我们自定义View的过程中，有时候处理滑动事件，当手指松开的时，我们需要让View移动到指定的位置。如果使用ScrollTo/ScrollBy或者其他方法（layout方法），那么这个时候我们就需要使用弹性滚动对象Scroller。
+
+Scroller的基本使用：
+
+```java
+Scroller scroller = new Scroller(getContext());
+
+private void smoothScrollTo(int dx, int dy, int duration) {
+    //在duration的时间内，缓慢滑动到dx + getScrollX,dy + getScrollY.
+    scroller.startScroll(getScrollX(), getScrollY(), dx, dy, duration);
+    //Scroller本身不能使View进行滑动，需要使View重绘。
+    invalidate();
+}
+//重写View的computeScroll方法
+@Override public void computeScroll() {
+    super.computeScroll();
+    if(scroller.computeScrollOffset()){
+        scrollTo(scroller.getCurrX(),scroller.getCurrY());
+        postInvalidate();
+    }
+}
+```
+
+以上就是Scroller的经典使用场景，我们调用srcoller的`startScroll()`方法来让View开始弹性滚动，其他startScroll方法并没有让View弹性滚动的功能，下面来看startScroll的实现。
+
+```java
+/**
+ * Start scrolling by providing a starting point, the distance to travel,
+ * and the duration of the scroll.
+ */
+public void startScroll(int startX, int startY, int dx, int dy, int duration) {
+    mMode = SCROLL_MODE;
+    mFinished = false;
+    mDuration = duration;
+    mStartTime = AnimationUtils.currentAnimationTimeMillis();
+    mStartX = startX;
+    mStartY = startY;
+    mFinalX = startX + dx;
+    mFinalY = startY + dy;
+    mDeltaX = dx;
+    mDeltaY = dy;
+    mDurationReciprocal = 1.0f / (float) mDuration;
+}
+```
+
+以上就是`startScroll()`的实现，可以看到，它只是对View的滑动参数做了记录，并没有实现滑动，而真正实现滑动的就是我们手动调用`invalidate()`方法来使View重新重绘，在View的`onDraw()`方法中又会调用到View默认预留的`computeScroll()`方法。而这个时候我们只需要重写`computeScroll()`方法，在`computeScroll()`方法中我们先去调用`scroller.computeScrollOffset()`方法判断scroller对象是否完成滚动，如果未完成，继续调用srcollTo方法并获取
+
+
 

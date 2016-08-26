@@ -28,6 +28,10 @@
 
 [android-open-source-project-cracking：Android 优质开源项目剖析与技术进阶](https://github.com/wingjay/android-open-source-project-cracking)
 
+## 博客文章
+
+[Android开发中的日常积累](https://github.com/lizhangqu/corelink)
+
 ## 完整项目
 [android-UniversalMusicPlayer：Google音乐播放器](https://github.com/flyou/Girls)
 

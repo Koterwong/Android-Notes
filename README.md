@@ -32,6 +32,8 @@
 
 [Android开发中的日常积累](https://github.com/lizhangqu/corelink)
 
+[React-Native学习指南](https://github.com/reactnativecn/react-native-guide)
+
 ## 完整项目
 [android-UniversalMusicPlayer：Google音乐播放器](https://github.com/flyou/Girls)
 

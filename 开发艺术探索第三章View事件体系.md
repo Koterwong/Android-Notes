@@ -165,7 +165,51 @@ public void startScroll(int startX, int startY, int dx, int dy, int duration) {
 }
 ```
 
-以上就是`startScroll()`的实现，可以看到，它只是对View的滑动参数做了记录，并没有实现滑动，而真正实现滑动的就是我们手动调用`invalidate()`方法来使View重新重绘，在View的`onDraw()`方法中又会调用到View默认预留的`computeScroll()`方法。而这个时候我们只需要重写`computeScroll()`方法，在`computeScroll()`方法中我们先去调用`scroller.computeScrollOffset()`方法判断scroller对象是否完成滚动，如果未完成，继续调用srcollTo方法并获取
+以上就是`startScroll()`的实现，可以看到，它只是对View的滑动参数做了记录，并没有实现滑动，而真正实现滑动的就是我们手动调用`invalidate()`方法来使View重新重绘，在View的`onDraw()`方法中又会调用到View默认预留的`computeScroll()`方法。而这个时候我们只需要重写`computeScroll()`方法，在`computeScroll()`方法中去调用`scroller.computeScrollOffset()`方法判断scroller对象是否完成滚动，如果未完成，继续调用srcollTo方法，参数需要传入scroller对象所计算的需要滑动的距离  ，接下来继续调用`postInvalidate`  方法，来引起View的重绘，不断重复这个过程知道Scroller滑动完成。Scroller对像的作用就是不断的引起View的重绘，并计算出View重绘时所需要的滑动的距离。其中还有一个重要的方法就是Scroller计算滑动距离是否完成的方法。我们来看一下`scroller.computeScrollOffset()`的实现。
 
+```java
+/**
+ * Call this when you want to know the new location.  If it returns true,
+ * the animation is not yet finished.
+ */ 
+public boolean computeScrollOffset() {
+    if (mFinished) {
+        return false;
+    }
+ 	//计算滑动经过的时间，如果时间小时滑动需要执行的时间，那么继续计算mCurrX、mCurrY。
+  	int timePassed = (int)(AnimationUtils.currentAnimationTimeMillis() - mStartTime)
+    if (timePassed < mDuration) {
+        switch (mMode) {
+        case SCROLL_MODE:
+            //通过默认插补器获取需要进行滑动的距离。
+            final float x = mInterpolator.getInterpolation(timePassed * mDurationReciprocal);
+            mCurrX = mStartX + Math.round(x * mDeltaX);
+            mCurrY = mStartY + Math.round(x * mDeltaY);
+            break;
+        case FLING_MODE:
+			......//这里不再分析
+    }
+    else {
+        mCurrX = mFinalX;
+        mCurrY = mFinalY;
+        mFinished = true;
+    }
+    return true;
+}
+```
 
+看到这里，Scroller的设计简直不要太棒。我们也能很明显的看出来Scroller对象真正职责，它会根据我们需要滑动的距离和时间计算出下一次小幅度滑动的距离，并配合View的`computeScroll`方法完成View的滑动。
 
+实现View的弹性滑动还可以使用动画和采用一定的延时策略这里就不再意义做介绍啦。
+
+### 5.View的事件分发机制
+
+（1）View事件分发的概述。
+
+所谓View事件的分发就是对MotionEvent事件的分发过程，即当一个MotionEvent事件产生，系统会把这个事件传递给一个具体的View。
+
+（2）事件分发的三个方法概述。
+
+- `onDispatchTouchEvent()`：	
+- `onInterceptTouchEvent()`：
+- `onTouchEvent()`：

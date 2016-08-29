@@ -14,6 +14,12 @@ Wrapping and Braces  选中
 - Extends/implements keyword -> wrap if long
 - Class Annotations Methodd Annotation -> Do not wrap
 
+Code Generation :
+
+- field 前缀加m，静态field前缀加s。
+
+
+
 ### 设置
 
 - 修改编辑器的字体大小 Setting -> Editor -> Color & Fonts
@@ -42,11 +48,21 @@ Wrapping and Braces  选中
 
 ###常用的快捷键
 
+- Ctrl + B ：快速进入方法。
+
+
+- Ctrl + E ：显示最近修改的文件。
+
+
 - Ctrl+F11：加BookMark，简直是非常有用的功能，不过需要去设置添加一下跳转下一个书签或上一个书签的快捷键才能发挥出该功能真正强大。
+
+- ALT + 2 :打开书签，可搭配上面的BookMark使用非常方面。
+
 - Ctrl+F12 : 输入关键字快速定位指定的变量或方法，支持模糊搜索。
+
 - Ctrl +Alt+左箭头或右箭头：返回前一个或下一个光标的位置，在想回溯阅读位置的时候非常有用
 
-- Ctrl + J 根据光标所处的位置弹出一些代码模版fori 
+- Ctrl + J 弹出一些代码模版fori 
 
   `ifn` `inn` 判断参数时候等于(不等于)null
   `fbc` 快速的findViewById
@@ -56,7 +72,7 @@ Wrapping and Braces  选中
   `Toast` 打印Toast
   `IntentView` 快速的Intent
 
-- Ctrl + Alt + T 弹出一些包围结构，例如if..else  while  for
+- Ctrl + Alt + T 弹出一些包围结构，例如if..else  while  for 。Surround With。
 
 - Ctrl ＋ [或]可以跳到大括号的开头结尾
 

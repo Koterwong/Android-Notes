@@ -34,6 +34,12 @@
 
 [React-Native学习指南](https://github.com/reactnativecn/react-native-guide)
 
+[Android学习笔记](https://github.com/GeniusVJR/LearningNotes)
+
+### 反编译工具
+
+[Jadx](https://github.com/skylot/jadx)
+
 ## 完整项目
 [android-UniversalMusicPlayer：Google音乐播放器](https://github.com/flyou/Girls)
 

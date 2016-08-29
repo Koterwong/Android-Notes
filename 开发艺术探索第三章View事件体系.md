@@ -210,6 +210,7 @@ public boolean computeScrollOffset() {
 
 （2）事件分发的三个方法概述。
 
-- `onDispatchTouchEvent()`：	
-- `onInterceptTouchEvent()`：
-- `onTouchEvent()`：
+- `dispatchTouchEvent()` ：用于事件分发，当触摸事件传递给当前View的时候此方法一定会调用。返回结果受当前View的`onTouchEvent()`和下级View的`dispatchTouchEvent()`影响，表示是否消耗当前事件。	
+- `onInterceptTouchEvent()`：在`dispatchTouchEvetn()`方法的内部调用，表示是否拦截当前事件，如果当前View拦截了某个事件，那么在这个事件序列中，该方法不会在调用。拦截的事件交给`onTouchEvent`处理，如果`onTouchEvent`返回false那在事件重新交给父View的`onTouchEvent`。
+- `onTouchEvent()`：处理事件，表示是否消耗当前事件，如果不消耗，同一事件序列中，当前View无法收到事件。
+

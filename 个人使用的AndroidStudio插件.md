@@ -6,11 +6,11 @@
 
 4. Android parceable code generator ： 快速生成parcelable接口的代码。
 
-5. Android Styler ：根据XML自动生成style的插件
+5. Android Styler ：根据XML自动生成style的插件。选中要生成styler的代码片段，然后使用快捷键 Ctrl + Shift + D 输入Style的名称即可。
 
-6. ECTranslation ：即使翻译插件
+6. ECTranslation ：即使翻译插件。
 
-7. codota：代码搜索神器
+7. codota：代码搜索神器。
 
 8. Android Material Design icon Generator：生成Materail Design图标。
 

@@ -206,11 +206,29 @@ public boolean computeScrollOffset() {
 
 （1）View事件分发的概述。
 
-所谓View事件的分发就是对MotionEvent事件的分发过程，即当一个MotionEvent事件产生，系统会把这个事件传递给一个具体的View。
+所谓View事件的分发就是对MotionEvent事件的分发过程，即当一个MotionEvent事件产生，系统会把这个事件传递给一个具体的View处理。
 
 （2）事件分发的三个方法概述。
 
 - `dispatchTouchEvent()` ：用于事件分发，当触摸事件传递给当前View的时候此方法一定会调用。返回结果受当前View的`onTouchEvent()`和下级View的`dispatchTouchEvent()`影响，表示是否消耗当前事件。	
 - `onInterceptTouchEvent()`：在`dispatchTouchEvetn()`方法的内部调用，表示是否拦截当前事件，如果当前View拦截了某个事件，那么在这个事件序列中，该方法不会在调用。拦截的事件交给`onTouchEvent`处理，如果`onTouchEvent`返回false那在事件重新交给父View的`onTouchEvent`。
 - `onTouchEvent()`：处理事件，表示是否消耗当前事件，如果不消耗，同一事件序列中，当前View无法收到事件。
+
+
+当一个点击事件产生后，它的传递顺序遵循如下顺序 Activity -> Window ->  View 。事件总是先传递给Activity ，Activity在传递给Window，最后Window在传递给顶级的View。顶级View接受到事件之后就会对事件进行分发。
+
+（3）关于事件分发的总结。
+
+- 一个事件序列是指，手指从按下屏幕的那一刻起到离开屏幕结束。中间会有一个ACTION_DOWN事件，多个ACTION_MOVE事件和一个ACTION_UP事件。
+- 一个View一旦决定拦截某个事件，那么整个事件必须交给该View去处理，View`onInterceptTouchEvent`也不会在此调用，因为View一旦决定拦截某个事件，那么这个事件序列就会交给他处理 。不过我们可以通过特殊手段将View的onTouchEvent事件强制交给其他View来处理。
+- 某个View一旦开始处理某个事件，它的`onTouchEvent`就会调用，如果View不对` ACTION_DOWN`进行消费，那么接下来的事件就不会交给该View去处理，父类的`ouTouchEvent`就会调用，以此类推。如果View不消耗除了`ACTION_DOWN`以外的事件，那么这个事件就会流失。
+- ViewGroup默认不拦截任何事件。它的`onInterceptTouchEvent`默认返回false。
+- View没有`onInterceptEvent`方法，一旦事件传递给他，那么它的`onTouchEvent`方法就会调用。
+- View的`ouTouchEvent`一般会消耗当前事件（返回true），除非它是不可点击的（clickable和longclickable同时为false）。View的longclickable属性默认都为false，click属性分情况，比如Button的clickable属性默认为true，而TextView的clickable属性为false。
+- View的`enable`属性，不影响onTouchEvent的返回值。那么它是disable状态的，只要它的clickable或者longclickable属性有一个为true，那么它的onTouchEvent就返回true。也就是说View的onTouchEvent的返回默认情况只和View的`clickable`和`longclickable`属性有关。
+- 当一个View处理事件时，如果他设置了`onTouchListener`那么它的`onTouch`方法就会调用，如果onTouch方法返回返回false，那么它的onTouchEvent就会调用，如果返回true那么onTouchEvent就不会调用。在`onTouchEvent`中，如果View设置了onClickListener，那么它的`onClick`方法会调用。
+- `onClick`发生的前提是View是可以点击的，并且收到了down和up的事件。
+- `requestDisallowInterceptTouchEvent`会干预父View的事件分发过程，但是ACTION_DOWN除外。
+
+### 5.1View的事件分发源码解析。
 

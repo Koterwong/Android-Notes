@@ -32,13 +32,19 @@
 
 [Android开发中的日常积累](https://github.com/lizhangqu/corelink)
 
-[React-Native学习指南](https://github.com/reactnativecn/react-native-guide)
+[React-Native学习	指南汇集了各类react-native学习资源、开源App和组件](https://github.com/reactnativecn/react-native-guide)
 
-[Android学习笔记](https://github.com/GeniusVJR/LearningNotes)
+[Android学习笔记LearningNotes](https://github.com/GeniusVJR/LearningNotes)
 
-### 反编译工具
+### 反编译工具	
 
 [Jadx](https://github.com/skylot/jadx)
+
+### 开发库（著名的就不记录了，因为这写必须会记在脑子里）
+
+[HermesEventBus：饿了么开源的基于EventBus的Android进程间通讯库](https://github.com/eleme/HermesEventBus)
+
+[Amigo：饿了么AndroidFix方案](https://github.com/eleme/Amigo)
 
 ## 完整项目
 [android-UniversalMusicPlayer：Google音乐播放器](https://github.com/flyou/Girls)

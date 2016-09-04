@@ -22,7 +22,7 @@ Code Generation :
 ### 提高开发效率的常用功能
 
 - attach debug ：可在快捷工具栏中找到。使开发者可以在不编辑代码的情况下。
-- Stucturally Search ：可在全局查找每个类中的相关代码段，非常好用。可以使用按两下Shift，输入Structurally Search打开，然后进行全局搜索。
+- Structurally Search ：可在全局查找每个类中的相关代码段，非常好用。可以使用按两下Shift，输入Search  Structurally 打开，然后进行全局搜索。
 - 自定义代码模版：Editer -> Live Template -> 选择新增。
 
 ```java

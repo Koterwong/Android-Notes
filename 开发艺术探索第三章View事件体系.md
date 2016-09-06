@@ -220,7 +220,7 @@ public boolean computeScrollOffset() {
 （3）关于事件分发的总结。
 
 - 一个事件序列是指，手指从按下屏幕的那一刻起到离开屏幕结束。中间会有一个ACTION_DOWN事件，多个ACTION_MOVE事件和一个ACTION_UP事件。
-- 一个View一旦决定拦截某个事件，那么整个事件必须交给该View去处理，View`onInterceptTouchEvent`也不会在此调用，因为View一旦决定拦截某个事件，那么这个事件序列就会交给他处理 。不过我们可以通过特殊手段将View的onTouchEvent事件强制交给其他View来处理。
+- 一个View一旦决定拦截某个事件，那么整个事件必须交给该View去处理，View的`onInterceptTouchEvent`也不会在此调用，因为View一旦决定拦截某个事件，那么这个事件序列就会交给他处理 。不过我们可以通过特殊手段将View的onTouchEvent事件强制交给其他View来处理。
 - 某个View一旦开始处理某个事件，它的`onTouchEvent`就会调用，如果View不对` ACTION_DOWN`进行消费，那么接下来的事件就不会交给该View去处理，父类的`ouTouchEvent`就会调用，以此类推。如果View不消耗除了`ACTION_DOWN`以外的事件，那么这个事件就会流失。
 - ViewGroup默认不拦截任何事件。它的`onInterceptTouchEvent`默认返回false。
 - View没有`onInterceptEvent`方法，一旦事件传递给他，那么它的`onTouchEvent`方法就会调用。

@@ -232,3 +232,89 @@ public boolean computeScrollOffset() {
 
 ### 5.1View的事件分发源码解析。
 
+前面了解到View事件分发顺序为：Activity -> Window ->View。
+
+ViewGroup的`dispatchTouchEvent` 方法，关于事件是否拦截方面做的处理。
+
+```java
+// Handle an initial down.
+if (actionMasked == MotionEvent.ACTION_DOWN) {
+    // Throw away all previous state when starting a new touch gesture.
+    // The framework may have dropped the up or cancel event for the previous gesture
+    // due to an app switch, ANR, or some other state change.
+    cancelAndClearTouchTargets(ev);
+    resetTouchState();
+}
+// Check for interception.
+final boolean intercepted;
+if (actionMasked == MotionEvent.ACTION_DOWN
+        || mFirstTouchTarget != null) {
+    final boolean disallowIntercept = (mGroupFlags & FLAG_DISALLOW_INTERCEPT) != 0;
+    if (!disallowIntercept) {
+        intercepted = onInterceptTouchEvent(ev);
+        ev.setAction(action); // restore action in case it was changed
+    } else {
+        intercepted = false;
+    }
+} else {
+    // There are no touch targets and this action is not an initial down
+    // so this view group continues to intercept touches.
+    intercepted = true;
+}
+```
+
+当ViewGroup不拦截事件时，在`dispatchTouchEvent`中对点击事件分发的源码如下：
+
+```java
+final View[] children = mChildren;
+for (int i = childrenCount - 1; i >= 0; i--) {
+    final int childIndex = customOrder
+            ? getChildDrawingOrder(childrenCount, i) : i;
+    final View child = (preorderedList == null)
+            ? children[childIndex] : preorderedList.get(childIndex
+    // If there is a view that has accessibility focus we want it
+    // to get the event first and if not handled we will perform a
+    // normal dispatch. We may do a double iteration but this is
+    // safer given the timeframe.
+    if (childWithAccessibilityFocus != null) {
+        if (childWithAccessibilityFocus != child) {
+            continue;
+        }
+        childWithAccessibilityFocus = null;
+        i = childrenCount - 1;
+    }
+    if (!canViewReceivePointerEvents(child)
+            || !isTransformedTouchPointInView(x, y, child, null)) 
+        ev.setTargetAccessibilityFocus(false);
+        continue;
+    }
+    newTouchTarget = getTouchTarget(child);
+    if (newTouchTarget != null) {
+        // Child is already receiving touch within its bounds.
+        // Give it the new pointer in addition to the ones it is h
+        newTouchTarget.pointerIdBits |= idBitsToAssign;
+        break;
+    }
+    resetCancelNextUpFlag(child);
+    if (dispatchTransformedTouchEvent(ev, false, child, idBitsToAs
+        // Child wants to receive touch within its bounds.
+        mLastTouchDownTime = ev.getDownTime();
+        if (preorderedList != null) {
+            // childIndex points into presorted list, find origina
+            for (int j = 0; j < childrenCount; j++) {
+                if (children[childIndex] == mChildren[j]) {
+                    mLastTouchDownIndex = j;
+                    break;
+                }
+            }
+        } else {
+            mLastTouchDownIndex = childIndex;
+        }
+        mLastTouchDownX = ev.getX();
+        mLastTouchDownY = ev.getY();
+        newTouchTarget = addTouchTarget(child, idBitsToAssign);
+        alreadyDispatchedToNewTouchTarget = true;
+        break;
+    }
+}  
+```

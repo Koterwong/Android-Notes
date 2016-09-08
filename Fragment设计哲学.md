@@ -2,9 +2,7 @@
 
 > #### [官网介绍](https://developer.android.com/guide/components/fragments.html#Transactions)
 
-fragment的出现给大屏幕设备，带来更加灵活的**UI**设计和动态的用户体验。Fragment定义自己的布局文件，是一个可重用的重要组件。
-
-Fragment一般对应一个布局文件，并且在`onCreateView()`方法中将布局文件`inflate`转为成view对象，因此Fragment也可以理解一个View。可以灵活的添加和移除。
+Fragment译为“碎片”，是一个可重用的重要组件，一般对应一个布局文件，并且在`onCreateView()`方法中将布局文件`inflate`转为成view对象，因此Fragment也可以理解一个View，可以灵活的添加和移除。
 
 #### 静态添加Fragment。
 
@@ -33,9 +31,7 @@ getFragmentManager().beginTransaction()
                 .commit();
 ```
 
-> 同样可以添加没有UI界面的Fragment，` add(Fragment, String) `。它并不与 Activity 布局中的视图关联，因此不会收到对 `onCreateView()` 的调用。因此，您不需要实现该方法。
-
-#### 传值通讯
+#### 与Activity通信
 
 ```Java
 //获取Fragment对象
@@ -49,7 +45,7 @@ View listView = activity.findViewById(R.id.list_view);
 
 #### 生命周期
 
-> ##### Acticity的返回栈又系统管理，而Fragment的返回栈又Activity管理
+> ##### Acticity的返回栈（任务栈）由系统管理，而Fragment的返回栈有Activity管理
 
 - 第一次被添加到Acticity的声明周期	
 
@@ -77,20 +73,18 @@ MainActivity.onWindowFocusChanged / ☐→
 
 - 被remove或replace，并且执行了addToBackStack()方法。
 
-> 这里需要注意的是，addToBackStack()点击返回键返回到是未添加该Fragment的状态。这里说的是被替换的Fragment（上一个Fragment）的声明周期方法。
-
-`onPause()->onStop()->onDestroyView()`
-
 ```Java
 MainActivity.onUserInteraction / →☐
 TestFragment.onPause / ☐→
 TestFragment.onStop / ☐→
 TestFragment.onDestroyView / ☐→
+//点击back键返回。
+TestFragment.onCreateView / ☐→
+TestFragment.onActivityCreated / ☐→
+TestFragment.onResume / ☐→
 ```
 
 - 被remove或replace，没有执行addToBackStack()方法。
-
-`onPause()->onStop()->onDestroyView()->onDestrop()->onDetch()`
 
 ```Java
 MainActivity.onUserInteraction / →☐
@@ -101,15 +95,9 @@ TestFragment.onDestroy / ☐→
 TestFragment.onDetach / ☐→
 ```
 
-- 被remove或者replace返回到上一个Fragment状态。
+- Fragment搭配ViewPager使用。
 
-`onCreateView()->onViewCreate()->onActivityCreated()–>onStart() ->onResume()`
+由于ViewPager的预加载特性，ViewPager左右的Fragment会预加载，并且生命周期从onAttach - > onResume 偷偷跑一遍。当某一个Fragment不在当前显示的ViewPager的左面或者右面的时候，这个Fragment就会进入onDestroyView状态，当该Fragment重新进入ViewPager预加载页面的时候，又会从新执行onCreateView - > onResume方法，以上就是Fragment和ViewPager基本的生命周期方法。
 
-```
-TestFragment.onCreateView / ☐→
-TestFragment.onViewCreated / ☐→
-TestFragment.onActivityCreated / ☐→
-TestFragment.onViewStateRestored / ☐→
-TestFragment.onStart / ☐→
-TestFragment.onResume / ☐→
-```
+
+

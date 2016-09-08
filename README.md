@@ -28,11 +28,9 @@
 
 [android-open-source-project-cracking：Android 优质开源项目剖析与技术进阶](https://github.com/wingjay/android-open-source-project-cracking)
 
-## 博客文章
+## 文章
 
 [Android开发中的日常积累](https://github.com/lizhangqu/corelink)
-
-[React-Native学习	指南汇集了各类react-native学习资源、开源App和组件](https://github.com/reactnativecn/react-native-guide)
 
 [Android学习笔记LearningNotes](https://github.com/GeniusVJR/LearningNotes)
 

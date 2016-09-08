@@ -19,6 +19,14 @@
 - [给Android开发者的RxJava详解](http://gank.io/post/560e15be2dca930e00da1083)
 - [Rx处理服务器请求、缓存的完美封装](http://gank.io/post/560e15be2dca930e00da1083)
 
+### React Native
+
+- [React Native - 入门指南](https://github.com/vczero/react-native-lesson)
+- [React-Native学习	指南汇集了各类react-native学习资源、开源App和组件](https://github.com/reactnativecn/react-native-guide)
+
+
+- [React Native Android 通信原理](https://longv2go.github.io/2016/02/02/react-android-%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86.html)
+
 ### 依赖注入
 
 - [理解Android中的注解与反射](http://www.jianshu.com/p/d4978bbce12a)

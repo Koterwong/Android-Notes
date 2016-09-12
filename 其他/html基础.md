@@ -112,7 +112,237 @@ from表单用户收集用户的输入。from表单元素包括不同type类型�
 | reset    | 重置                             |
 | checkbox | 复选框                            |
 
-另外`<input>`标签中另一个重要的属性就是name属性，它代表提交给后台数据的键信息。
+另外`<input>`标签中另一个重要的属性就是name属性，它代表提交给后台数据的键信息，value代表值属性。
+
+## Css：cascading style sheet（层叠样式表）
+
+> css用于设置网页的显示效果，将网页的显示和内容分离，也是一种`解耦`的思想，html只需要把显示内容封装起来，不使用属性，用css来控制内容的显示效果。在我们需要更换网页的显示效果的时候，只需要更改css样式而不需要我们更改html代码。
+
+##### css和html的结合方式
+
+- 在html的标签上，提供了一个属性，`style = "css代码"`。
+- 在html的文件上，提供了一个标签，`<style type = "test/css"> css代码 </style>`，这个标签需要放到`<head></head>`中间。
+- 引入外部文件的方式。
+  - 通过`@import url ("css文件地址")`，需要注意，这种方式引入方式代码必须放到`<style>`中间。
+  - 通过`<link rel="stylesheet" type="text/css" href="css文件地址">`方式引入，这种方式不需要放到`<style>`中间，放到`<head></head>`中间即可。
+
+##### css选择器
+
+这个先说一下css选择器的优先级：由上到下，由外到内。优先级由低到高。**标签名选择器 < 类选择器 < ID选择器 < style属性。**
+
+- 基本选择器
+
+  - 标签选择器，css代码直接作用到标签上`div{ } span{ }`。**给相同的标签设置相同的样式。**
+  - 类选择器：在HTML标签上提供了`class`用于引入css属性。class选择器的基本写法`.class的名称{ css代码 }`，在html中通过`<div class = "class的名称">`的方式引入。**这种方式可以给不同的标签设置相同的样式。**
+  - ID选择器：在HTML标签上提供了`id`属性用于引入css属性。ID选择器的基本写法`#id的名称{ css代码 }`，在HTML中通过`<div class = "id的名称">`的方式引入。**这种方式一般与JS搭配使用较多**
+
+- 拓展选择器
+
+  - 关联选择器：写法`div  font{ css代码 }` ，这个css样式在作用在嵌套在**嵌套在div标签内font标签。** 
+
+  - 组合选择器：写法`.hehe,#haha{ css代码 }` ，这个写法一般用在多个**选择器具有相同的样式代码**。
+
+  - 伪元素选择器：根据HTML标签的不同的状态显示不同的代码片段，其实就是为标签选择器加入不同的状态响应。一般写法：
+
+    ```css
+    input:FOCUS {  /* 在输入框获取焦点的时候显示css属性 */
+    	background-color: red;  
+    }
+    a:LINK {  /* 未访问 */
+    	text-decoration: none;
+    	color: blue;
+    }
+    a:VISITED {  /* 访问完成 */
+    	color: yellow;
+    	font-size: 20px;
+    }
+    a:HOVER {  /* 悬停 */
+    	color: red;
+    	font-size: 25px;
+    }
+    a:ACTIVE {  /* 点击状态 */
+    	color: green;
+    	font-size: 35px;
+    }
+    ```
+
+##### css盒子模型
+
+在进行布局前需要把数据封装到一块一块的区域内，这个区域的专业术语叫盒子。关于和盒子的几个属性：边框（border）、内边距（padding）、外边距（margin）。
+
+- 使用css + div 布局
+
+```css
+<style type="text/css">
+    div {
+        width: 200px;
+        height: 100px;
+    }
+    #div1 {
+        background-color: red;
+        position: absolute;
+        top: 100px;
+        left: 50px;
+    }
+    #div2 { background-color: green; }
+</style>
+	
+/* html布局*/
+<div id="div1">div区域1</div>
+<div id="div2">div区域2</div>
+```
+
+## JavaScript
+
+javascript是基于**对象和事件驱动**的脚本语言，作用在客户端的浏览器上。具有交互性、安全性（不可以访问本地的磁盘）、跨平台性（通过浏览器解析）。
+
+JavaScript的语言组成
+
+- ECMAScript：javascript语言底层标准（语法，变量）。
+- BOM ：Browser Object Model 浏览器对象模型。
+- DOM ：Document Object Model 文档对象模型。
+
+JavaScript和Html代码的结合方式：
+
+- 内部JS程序，放在HTML代码中：`<script type="text/javascript"> JS代码 </script>`。JS代码可以放到HTML代码的任意位置，但是推荐放到body的最下面。
+- 外部JS程序，在HTML中引入单独的JS程序：`<script src = "test.js"></script>`。需要注意的是，如果引入外部的JS代码，那么在`<script>`标签的内部就不能再编写js代码，因为引入外部的js代码会使内部代码失效。
+
+##### JavaScript的数据类型
+
+JavaScript和java一眼存在两种数据类型：基本数据类型和引用数据类型。
+
+- 基本数据类型是存储在栈（Stack）中的简单数据。包括：Num 、String 、Boolean、null、Undefined。（区别Java，String在JS中属于基本数据类型）。
+- 引用数据类型是存储在堆（heap）中的对象。所有的引用类型都是Object。
+- Js是一种弱引用类型的语言，课通过`typeOf（）`方法查看变量的类型。
+
+##### JavaScript的运算符
+
+Js和运算符和java区别不大，这里只把和java有差别的地方显示出来。
+
+- Js中小数和整数都是数字类型，在除法运算中没有整数会出现小数结果。
+- 字符串与数字相加 + ，是字符串连接。**如果相减，字符串直接转化成数字再相减。**
+- Boolean类型可以进行运算，**false就是0或者null，非0非空是true，默认用1显示。**
+- js中 == 比较的是两个变量的值是否相等。比较的时候两个变量会转化成一致的变量进行运行。如果我们要比较变量的类型和值相等，就需要使用`===` 。
+
+##### JavaScript的语句、数组和函数
+
+**语句** ：Js中语句和java几乎没有区别，这里也不再记录了。
+
+**数组** ：在JS中声明数组的方式有三种：`1. var arr = [1,2,3]` 声明一个包含三个元素的数组。`2. var arr= new Array(5) ` 声明一个长度是5的数组。 `3. var arr = new Array(1,2,3)`声明一个长度为三，包含1、2、3元素的数组。**在Js中数组的长度是可变的，可以存放不同类型的数据。**
+
+**函数** :  在JS中声明一个函数使用`function`关键字。js的函数具有以下特点
+
+- 定义参数列表时，不必使用var关键字。
+- JavaScript中函数不存在重载形式。
+- 在每一个JS的函数总都存在一个arguments数组，用于存放函数参数列表。
+- 如果调用方法是，忘记了添加`()` ，那么函数表示函数对象的引用，打印出来的话显示的内容的是函数体的内容。
+
+**动态函数 ：** 动态函数是通过js的内置对象Function，通过new Function(参数1，参数2)来创建动态函数。
+
+```javascript
+var param1 = "x,y";
+var param2 = "return x + y";
+//声明动态函数
+var add = new Function(param1,param2);
+var sum = add(4,5);  
+```
+
+**匿名函数：** 匿名函数就是没有名称的函数，通常是函数的简写形式。
+
+```javascript
+var getSum = function (){
+	return 100;
+};
+alert(getSum());
+```
+
+#### JavaScript内置对像
+
+**String对像**
+
+在js中String对象相关的方法分为两类：一种是与Html相关的方法，另一种是和java中String对象相似的方法。和java对象相识的就不列出啦。下面是和html相关的方法。
+
+```javascript
+var str = "abc";
+println(str.bold());       				//粗体
+println(str.fontsize(3));				//字体的大小 1-7
+println(str.fontcolor("red"));			//字体的颜色
+println(str.italics());          		//斜体
+println(str.link("www.google.com"));    //链接到网站
+println(str + '3'.sub());     			//显示下标
+println(str + "2".sup());				//显示上标
+```
+
+**Array对象**
+
+创建数组的方法上面已经提到过了，这里对js中数组对象的方法做一下说明。
+
+```javascript
+concat(元素，数组);		//返回新的数组
+join(s)					//通过s标识，进行分隔，返回字符串
+pop()					//删除末尾的元素，返回最后一个元素
+push()					//向末尾添加元素，返回新数组的长度
+sort()					//排序的方法
+```
+
+**Date对象**
+
+```javascript
+var date = new Date();
+
+date.toLocaleString()	    			//转换本地的日期格式
+date.toLocaleDateString()	         	//只包含日期
+date.toLocaleTimeString()				//只包含时间
+
+date.getDate();							//返回一个月中的某一天（1-31）
+date.getDay();							//返回一周的某一天（0-6）
+date.getMouth();						//返回月份（0-11）
+date.getFullYear();						//返回年份
+date.getTime();							//返回毫秒数
+```
+
+**Math对象**
+
+```javascript
+//Math对象包含的对象全是静态方法。
+Math.ceil(x)		//上舍入
+Math.floor(x)		//下舍入
+Math.round(x)		//四舍五入
+Math.pow(x,y)		//x的y次幂
+Math.random()		//0-1的随机数
+```
+
+**RegExp正则表达式对象**
+
+```javascript
+//创建RegExp对象
+var reg = /[1-4]{3}/    				// "//"中间的内容代表正则表达式的内容
+var reg = /^[1-4]{3}$/  				// "/^ &/"中间的内容代表正则表达式内容
+var reg = new RegExp("[1-4]{3}") 		//这种创建正则表达式的方法不常用
+//匹配的两个方法
+
+```
+
+**Js全局函数Global**
+
+全局函数本身存在内存中，直接可以哪来使用，通过Global对象进行管理。
+
+```javascript
+eval("alter('he')")   			//直接解析js代码执行。
+isNaN()							//判断是否是非数字值
+parseInt()						//解析字符串，返回整数
+encodeURI()						//对内容进行编码，表单输入内容自动帮我们进行编码上传。
+decodeURI()						//解析解码
+encodeURIComponent()			//编解码URI组件
+
+
+
+
+
+decodeURIComponent()
+```
+
+​	
 
 # 附录：Html标签名次解析
 

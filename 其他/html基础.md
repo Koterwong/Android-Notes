@@ -114,7 +114,7 @@ from表单用户收集用户的输入。from表单元素包括不同type类型�
 
 另外`<input>`标签中另一个重要的属性就是name属性，它代表提交给后台数据的键信息，value代表值属性。
 
-## Css：cascading style sheet（层叠样式表）
+## Css：cascading style sheet
 
 > css用于设置网页的显示效果，将网页的显示和内容分离，也是一种`解耦`的思想，html只需要把显示内容封装起来，不使用属性，用css来控制内容的显示效果。在我们需要更换网页的显示效果的时候，只需要更改css样式而不需要我们更改html代码。
 
@@ -334,15 +334,34 @@ parseInt()						//解析字符串，返回整数
 encodeURI()						//对内容进行编码，表单输入内容自动帮我们进行编码上传。
 decodeURI()						//解析解码
 encodeURIComponent()			//编解码URI组件
-
-
-
-
-
 decodeURIComponent()
 ```
 
-​	
+#### Bom
+
+Bom，Browser Object Model，浏览器对象模型，提供了一系列操作浏览器对象的API。主要包括以下对象：
+
+- Window
+- Navigator
+- Screen
+- History
+- Location
+
+Window对象，表示在浏览器中打开的窗口，一般情况下一个窗口下有一个Window对象（iFrame标签会为没框架创建一个Window）。window对象可以操作当前的窗口，例如获取窗口的位置、确认窗口大小、弹出对话框(window.alter())。比如打开窗口`window.open`和关闭当前窗口`window.close()` 。
+
+Navigator浏览器版本对象，可以通过navigator.uesrAgent回去浏览器相关信息。
+
+Screen和屏幕相关对象。
+
+History浏览器历史对象，back()方法返回上一个页面，forward()去下一个页面，go()去指定的页面，0代表当前页面。
+
+Location和浏览器地址相关的对象，location.href  = "http://www.baidu.com"，让浏览器跳转到当前地址。
+
+#### Dom
+
+Dom，Document Object Model，浏览器对象模型，提供了一系列操作html文档的对象。详细的Dom相关api可以参考[W3SchoolDom](http://www.w3school.com.cn/jsref/dom_obj_document.asp) 。
+
+
 
 # 附录：Html标签名次解析
 

@@ -7,7 +7,7 @@ Gradle是Android Studio默认编辑工具，它在项目的依赖管理、库管
 - build.gradle : 全局的Gradle配置。
 - gradle.properties : 一般用来配置build.gradle脚本中的动态参数，例如signingConfigs信息。
 - local.properties : 主要配置SDK和NDK的路径，例如`sdk.dir  =D\:\\Android\\sdk\\ndk-bundle`
-- settings.gradle : 引入module。
+- settings.gradle : 引入module，配置module工程目录。
 
 在每个module中会有一个关于我们module的gradle配置文件：
 

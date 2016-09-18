@@ -1,6 +1,6 @@
 #### 1、简单介绍
 
-Dagger2是一款快速的基于编译时注解的依赖注入框架。是Google对良心企业Square公司开发的Dagger的改进版本。具体改进了那些内容，我也不知道，以后再慢慢研究吧，我们先来学习如何使用它。
+Dagger2是一款快速的依赖注入框架。
 
 #### 2、相关概念
 
@@ -18,19 +18,21 @@ Dagger2是一款快速的基于编译时注解的依赖注入框架。是Google�
 
 这里小结一下：
 
-- Inject：标注目标类的属性成员和注入类的构造函数。
-- Module：简单工厂，生成注入类的实例。第三方库需要注入的时候就必须使用Module实现。
-- Component： 注射器，连接器。连接目标了和注入类的实例，同时也管理module。一般我们的应用程序要有一个全局的Component用来管理整个App都用到的类实例（这些全局的类实例一般都是单例的）。其次，对于每一个页面也会对应一个Component，这当然不是必须，有页面依赖的类实例是一样的也可以公用一个Component。
+- Inject：标注目标类的属性成员和注入类的构造函数。在目标类中标注属性成员表示我们要那个类，在标注要注入类的构造函数的时候，标注我们可以通过component将该类的实例注入到相关的目标类中。
+- Module：可以理解为简单工厂，用于生成要注入类的实例。上面通过Inject标注构造的方式不需要使用Module去提供实例，但是第三方库需要注入的时候就必须使用Module实现。在Module中我们使用@Provides注解对module中提供实例的方法进行标注，Component需要那个实例就会查找Module中使用@Provides标注的方法。
+- Component： 注射器，连接器。连接目标类和要注入类的实例，同时也管理该component的module，Component中的modules属性可以把Module加入Component，modules可以加入多个Module。一般我们的应用程序要有一个全局的Component用来管理整个App都用到的类实例（这些全局的类实例一般都是单例的）。其次，对于每一个页面也会对应一个Component，这当然不是必须，有些页面依赖的类实例是一样的也可以公用一个Component。
 - Provides：Module中创建依赖类实例的方法使用该注解标注。
-- Qualifier：当Component找到多个创建相同示例的方法时，就需要使用Qualifier进行区分了。
-- Scope：是一个注解作用域，理解起来很困难，而且很多文章也讲的不是清楚。大部分文章总结Scope的作用是：可以通过自定义的Scope注解，来限定通过Module和Inject方法创建的类的生命周期和目标类的生命周期保持一致。其实Scope根本没有这些功能，它的真正作用是**管理Component之间的组织方式**。不管是依赖方式还是包含方式，都有必要用自定义的Scope注解来标记这些Component，这些注解最好不要一样了，不一样能更好的体现出Component的组织方式。还有编辑器会检查有依赖关系或包含关系的Component，若发现有Component没有自定义的Scope注解，则会报错；*另外Scope还能更好的管理Component和Module的匹配关系*；提高代码的可读性；后面两点在Singleton中有体现。
+- Qualifier：用于解决依赖注入的迷失。
+- Scope：是一个需要我们自定义注解作用域，理解起来很困难，而且很多文章也讲的不是清楚。大部分文章总结Scope的作用是：可以通过自定义的Scope注解，来限定通过Module和Inject方法创建的类的生命周期和目标类的生命周期保持一致。其实Scope根本没有这些功能，它的真正作用是**管理Component之间的组织方式**。不管是依赖方式还是包含方式，都有必要用自定义的Scope注解来标记这些Component，这些注解最好不要一样了，不一样能更好的体现出Component的组织方式。还有编辑器会检查有依赖关系或包含关系的Component，若发现有Component没有自定义的Scope注解，则会报错；*另外Scope还能更好的管理Component和Module的匹配关系*；提高代码的可读性；后面两点在Singleton中有体现。
 - Singleton：Singleton并没有创建单例的能力，它是Scope的一种实现。要想实现单例，我们需要在Module中定义创建实例的方法（Inject的方式不行），使用全局的AppComponent管理Module，保证AppComponent只初始化一次。既然Singleton不能创建单例，那么它的作用是什么呢？保证AppComponent和Module是匹配的，如果AppComponent的Scope个Module的Scope不一样，那么编译时就会报错。提高代码的可读性，让程序员明白Module中创建的类是单例的。
 
 Component：Component是注入依赖实例的关键的关键，在目标类中使用Inject标注要注入的类的时候，在调用inject方法之后，Component会向自己管理的Module中查找用Provides标志的创建实例的方法，如果没有就会查找用Inject标记的相关构造函数。Module的优先级高于用Inject标注的构造函数。如果在Module找到相关实例，就会停止到Inject标注的构造函数中查找。
 
 依赖注入迷失：Component在寻找目标类所依赖的实例时（在Module的Provides或者Inject标注的构造函数），这里假设在Inject标注中寻找，如果多个构造函数是用Inject进行标注，就会造成依赖注入迷失。这个时候就需要使用Qualifier（限定符）告诉Component使用那个构造函数进行实例化，通常我们是用自定义的Qualifier注解标注目标类的属性和Inject的够着函数（@Named注解就是Dagger2的默认实现方式）。这种实例化的方式相当与给使用Inject标志的构造函数加上一个ID。（使用方法后面介绍）。
 
-**共享类实例（假设Activity的Component需要依赖到全局Component，那么这个时候就涉及共享类实例的问题了），Component之间的组织关系**
+**共享类实例，Component提供类的实例，如果Component想把其他Component注入到自己的目标类中，假设Activity的Component需要依赖到全局Component，那么这个时候就涉及共享类实例的问题了**
+
+**Component之间的组织关系**
 
 - dependencies ：一个Component可以依赖一个或者多个Conmponent。
 - SubComponent： 一个Component可以包含一个或多个Component，被包含的Componnet还可以继续包含其他的Component。SubComponent就是被包含的体现。
@@ -39,7 +41,7 @@ Component：Component是注入依赖实例的关键的关键，在目标类中�
 **一次依赖注入具体步骤如下：**
 
 - 1、在Module中查找是否有创建该实例的方法。
-- 2、如存在创建实例的方法，查看该方法时候存在参数。
+- 2、Module中如果存在创建实例的方法，那么查看该方法是否存在参数。
   - 2.1、若存在参数，则按步骤1开始依次初始化每个参数。
   - 2.2、若不存在参数，则直接初始化该实例，整个依赖注入过程完成。
 - 3、Module中不存在创建实例的方法，则查找Inject注解的构造函数。
@@ -60,7 +62,7 @@ buildscript {
   dependencies {
     classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
   }
-}
+}	
 ```
 
 在module的build.grandle中添加。
@@ -333,7 +335,7 @@ public interface MainComponent {
 
 在MainModule这里提供了Book实例，我们要做的就是通过注入全局的Toast对象然后弹出Book的书名信息。
 
-```
+```java
 @Module
 public class MainModule {
     @Provides @PerActivity Book providesBook() {

@@ -44,5 +44,12 @@
 ### 性能优化
 
 - [手机QQ及Qzone速度优化实践 ： 有种速度让你望尘莫及](http://mp.weixin.qq.com/s?__biz=MzA4Nzg5Nzc5OA==&mid=2651661643&idx=1&sn=ed4fd90350045cefc38b7436f94193a1&scene=0#wechat_redirect)
+
 - [Android WebView：性能优化不得不说的事](http://motalks.cn/2016/09/11/Android-WebView-JavaScript-3/)
 
+- [ 那些你不知道的APK 瘦身，让你的APK更小](http://blog.csdn.net/vfush/article/details/52266843)
+
+  ​
+
+
+  ​

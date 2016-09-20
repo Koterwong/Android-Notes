@@ -34,11 +34,13 @@
 
 [Android学习笔记LearningNotes](https://github.com/GeniusVJR/LearningNotes)
 
+[Android架构文章合集](https://github.com/CameloeAnthony/AndroidArchitectureCollection)
+
 ### 反编译工具	
 
 [Jadx](https://github.com/skylot/jadx)
 
-### 开发库（著名的就不记录了，因为这写必须会记在脑子里）
+### 开发库（著名的就不记录了，因为这些必须要记在脑子里）
 
 [HermesEventBus：饿了么开源的基于EventBus的Android进程间通讯库](https://github.com/eleme/HermesEventBus)
 

@@ -19,6 +19,12 @@ Code Generation :
 - field 前缀加m，静态field前缀加s。
 
 
+Tabs and Indent:
+
+- Tab size :2 ; 
+-  Indent :2 
+- continuation Indent :4;
+
 ### 提高开发效率的常用功能
 
 - attach debug ：可在快捷工具栏中找到。使开发者可以在不编辑代码的情况下。

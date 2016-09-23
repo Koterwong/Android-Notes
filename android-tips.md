@@ -30,5 +30,3 @@ for (String string : sms) {
 }
 ```
 - 放个知乎连接[Android开发工具和技巧](https://www.zhihu.com/question/27140400)
-
-  ​

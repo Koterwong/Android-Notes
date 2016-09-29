@@ -22,8 +22,13 @@ Code Generation :
 Tabs and Indent:
 
 - Tab size :2 ; 
--  Indent :2 
+- Indent :2 
 - continuation Indent :4;
+
+JavaDoc：
+
+- Other -> Wrap at rigth magin
+- Other -> Do not wrap one line comments 
 
 ### 提高开发效率的常用功能
 

@@ -211,6 +211,7 @@ applicationVariants.all { variant ->
 org.gradle.daemon = true   //开启多个线程编译
 org.gradle.parallel = true   //并行构建
 org.gradle.configureondemand =true   //按需配置，目前在孵化阶段。
+android.enableBuildCache=true  //android studio2.2新引入功能，目前还在改进阶段
 ```
 
 在Module的gradle文件添加

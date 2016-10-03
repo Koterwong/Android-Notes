@@ -29,6 +29,7 @@ JavaDoc：
 
 - Other -> Wrap at rigth magin
 - Other -> Do not wrap one line comments 
+- Other -> Preserve lines  feeds
 
 ### 提高开发效率的常用功能
 

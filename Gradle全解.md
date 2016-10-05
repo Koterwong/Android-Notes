@@ -223,3 +223,17 @@ dexOptions{
 }
 ```
 
+##### 8、让x86的模拟器能安装仅支持armCPU的App。
+
+这个是在stackoverflow看到的，当时在维护公司的老代码，而那份代码只引入了arm的so包，我又需要在x86的模拟器上测试，就找到了这个。需要注意的是，虽然能运行，但是涉及到so包的东西还是会崩溃的。
+
+```java
+splits {
+  abi {
+    enable true
+    reset()
+    include 'x86', 'armeabi-v7a'
+    universalApk true
+  }
+}
+```

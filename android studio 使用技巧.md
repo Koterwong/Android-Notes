@@ -35,12 +35,12 @@ JavaDoc：
 
 - attach debug ：可在快捷工具栏中找到。使开发者可以在不编辑代码的情况下。
 - Structurally Search ：可在全局查找每个类中的相关代码段，非常好用。可以使用按两下Shift，输入Search  Structurally 打开，然后进行全局搜索。
-- 自定义代码模版：Editer -> Live Template -> 选择新增。
+- 自定义代码模版：Editer -> Live Template -> 在Class的File模板里加入即可。
 
 ```java
 /*
- * ${NAME}     ${DATE}-${MONTH}-${DAY}
- * Copyright (c) ${YEAR} KOTERWONG All right reserved
+ * ${NAME}     ${DATE} ${HOUR}：${MINUTE}
+ * Copyright (c) ${YEAR} Koterwong All right reserved
  */
 ```
 

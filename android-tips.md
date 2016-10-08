@@ -5,6 +5,7 @@
 
 - 给View控件设置`clickable="true"`则该控件就会消费点击事件。
 - View类中的`callOnClick()，performClick()，performLongClick()，`用于触发View的点击事件。
+- 关于?attr/xxx  的解释，当我们的activity或者dialog的布局文件通过?attr/xxx  引入了某个属性这个属性的值就是我们当前activity或者dialog的theme主题样式的某个属性的值。
 #### TextView、EditText
 - TextView字放大后字体变细：`android:fontFamily="sans-serif-light"`
 - TextView.setError()。可以设置textView的错误图片，和弹出错误信息。

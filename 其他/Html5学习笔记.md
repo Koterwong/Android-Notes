@@ -299,3 +299,247 @@ Your browser does not support the canvas element.
 
 ## Html 5 内联 SVG
 
+什么是SVG？
+
+- SVG 指可伸缩矢量图形 (Scalable Vector Graphics)
+- SVG 用于定义用于网络的基于矢量的图形
+- SVG 使用 XML 格式定义图形
+- SVG 图像在放大或改变尺寸的情况下其图形质量不会有损失
+- SVG 是万维网联盟的标准
+
+SVG 的优势。与其他图像格式相比（比如 JPEG 和 GIF），使用 SVG 的优势在于：
+
+- SVG 图像可通过文本编辑器来创建和修改
+- SVG 图像可被搜索、索引、脚本化或压缩
+- SVG 是可伸缩的
+- SVG 图像可在任何的分辨率下被高质量地打印
+- SVG 可在图像质量不下降的情况下被放大
+
+把 SVG 直接嵌入 HTML 页面
+
+实例
+
+
+
+```html
+<!DOCTYPE html>
+<html>
+<body>
+
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="190">
+  <polygon points="100,10 40,180 190,60 10,60 160,180"
+  style="fill:lime;stroke:purple;stroke-width:5;fill-rule:evenodd;" />
+</svg>
+
+</body>
+</html>
+```
+
+如需学习更多有关 SVG 的知识，请阅读 [SVG 教程](http://www.w3school.com.cn/svg/index.asp)。
+
+## HTML 5 Canvas vs. SVG
+
+*Canvas 和 SVG 都允许您在浏览器中创建图形，但是它们在根本上是不同的。**
+
+### SVG
+
+SVG 是一种使用 XML 描述 2D 图形的语言。
+
+SVG 基于 XML，这意味着 SVG DOM 中的每个元素都是可用的。您可以为某个元素附加 JavaScript 事件处理器。
+
+在 SVG 中，每个被绘制的图形均被视为对象。如果 SVG 对象的属性发生变化，那么浏览器能够自动重现图形。
+
+### Canvas
+
+Canvas 通过 JavaScript 来绘制 2D 图形。
+
+Canvas 是逐像素进行渲染的。
+
+在 canvas 中，一旦图形被绘制完成，它就不会继续得到浏览器的关注。如果其位置发生变化，那么整个场景也需要重新绘制，包括任何或许已被图形覆盖的对象。
+
+### Canvas 与 SVG 的比较
+
+下表列出了 canvas 与 SVG 之间的一些不同之处。
+
+Canvas
+
+- 依赖分辨率
+- 不支持事件处理器
+- 弱的文本渲染能力
+- 能够以 .png 或 .jpg 格式保存结果图像
+- 最适合图像密集型的游戏，其中的许多对象会被频繁重绘
+
+SVG
+
+- 不依赖分辨率
+- 支持事件处理器
+- 最适合带有大型渲染区域的应用程序（比如谷歌地图）
+- 复杂度高会减慢渲染速度（任何过度使用 DOM 的应用都不快）
+- 不适合游戏应用
+
+## HTML5 地理定位
+
+暂时略过
+
+## HTML 5 Web 存储
+
+在客户端存储数据
+
+HTML5 提供了两种在客户端存储数据的新方法：
+
+- localStorage - 没有时间限制的数据存储
+- sessionStorage - 针对一个 session 的数据存储
+
+之前，这些都是由 cookie 完成的。但是 cookie 不适合大量数据的存储，因为它们由每个对服务器的请求来传递，这使得 cookie 速度很慢而且效率也不高。
+
+Html5 存储数据特点：
+
+- 在 HTML5 中，**数据不是由每个服务器请求传递的，而是只有在请求时使用数据**。它使在不影响网站性能的情况下存储大量数据成为可能。
+- **对于不同的网站，数据存储于不同的区域，并且一个网站只能访问其自身的数据。**
+- **HTML5 使用 JavaScript 来存储和访问数据。**
+
+### localStorage 方法存储数据
+
+localStorage 方法存储的数据没有时间限制。第二天、第二周或下一年之后，数据依然可用。
+
+```html
+下面的例子对用户访问页面的次数进行计数：
+<script type="text/javascript">
+	if (localStorage.pagecount)
+  	{
+ 		localStorage.pagecount=Number(localStorage.pagecount) +1;
+ 	}
+	else
+  	{
+  		localStorage.pagecount=1;
+  	}
+	document.write("Visits "+ localStorage.pagecount + " time(s).");
+</script>
+```
+
+### sessionStorage 方法
+
+sessionStorage 方法针对一个 session 进行数据存储。当用户关闭浏览器窗口后，数据会被删除。
+
+```
+下面的例子对用户在当前 session 中访问页面的次数进行计数：
+
+<script type="text/javascript">
+	if (sessionStorage.pagecount)
+  	{
+  		sessionStorage.pagecount=Number(sessionStorage.pagecount) +1;
+  	}
+	else
+  	{
+  		sessionStorage.pagecount=1;
+  	}
+	document.write("Visits "+sessionStorage.pagecount+" time(s) this session.");
+</script>
+```
+
+## HTML 5 应用程序缓存
+
+### 什么是应用程序缓存（Application Cache）？
+
+HTML5 引入了应用程序缓存，这意味着 web 应用可进行缓存，并可在没有因特网连接时进行访问。**使用 HTML5，通过创建 cache manifest 文件，可以轻松地创建 web 应用的离线版本。**
+
+应用程序缓存为应用带来三个优势：
+
+- 离线浏览 - 用户可在应用离线时使用它们
+- 速度 - 已缓存资源加载得更快
+- 减少服务器负载 - 浏览器将只从服务器下载更新过或更改过的资源。
+
+### 启用Cache Manifest 
+
+如需启用应用程序缓存，请在文档的 `<html>` 标签中包含 manifest 属性：
+
+```
+<!DOCTYPE HTML>
+	<html manifest="demo.appcache">
+	...
+</html>	
+```
+
+每个指定了 manifest 的页面在用户对其访问时都会被缓存。如果未指定 manifest 属性，则页面不会被缓存（除非在 manifest 文件中直接指定了该页面）。
+
+manifest 文件的建议的文件扩展名是：".appcache"。
+
+请注意，manifest 文件需要配置*正确的 MIME-type*，即 "text/cache-manifest"。必须在 web 服务器上进行配置。
+
+### 配置Manifest 文件
+
+manifest 文件是简单的文本文件，它告知浏览器被缓存的内容（以及不缓存的内容）。
+
+manifest 文件可分为三个部分：
+
+- *CACHE MANIFEST* - 在此标题下列出的文件将在首次下载后进行缓存
+- *NETWORK* - 在此标题下列出的文件需要与服务器的连接，且不会被缓存
+- *FALLBACK* - 在此标题下列出的文件规定当页面无法访问时的回退页面（比如 404 页面）
+
+（1）CACHE MANIFEST，第一行，CACHE MANIFEST，是必需的：
+
+```html
+CACHE MANIFEST
+/theme.css
+/logo.gif
+/main.js
+```
+
+上面的 manifest 文件列出了三个资源：一个 CSS 文件，一个 GIF 图像，以及一个 JavaScript 文件。当 manifest 文件加载后，浏览器会从网站的根目录下载这三个文件。然后，无论用户何时与因特网断开连接，这些资源依然是可用的。
+
+（2）NETWORK，下面的 NETWORK 小节规定文件 "login.asp" 永远不会被缓存，且离线时是不可用的：
+
+```html
+NETWORK:
+login.asp
+```
+
+可以使用星号来指示所有其他资源/文件都需要因特网连接：
+
+```html
+NETWORK:
+*
+```
+
+（3）FALLBACK，下面的 FALLBACK 小节规定如果无法建立因特网连接，则用 "offline.html" 替代 /html5/ 目录中的所有文件：
+
+```
+FALLBACK:
+/html5/ /404.html
+```
+
+注释：第一个 URI 是资源，第二个是替补。
+
+更新缓存
+
+一旦应用被缓存，它就会保持缓存直到发生下列情况：
+
+- 用户清空浏览器缓存
+- manifest 文件被修改（参阅下面的提示）
+- 由程序来更新应用缓存
+
+**实例 - 完整的 Manifest 文件**
+
+```
+CACHE MANIFEST
+# 2012-02-21 v1.0.0
+/theme.css
+/logo.gif
+/main.js
+
+NETWORK:
+login.asp
+
+FALLBACK:
+/html5/ /404.html
+```
+
+重要的提示：以 "#" 开头的是注释行，但也可满足其他用途。应用的缓存会在其 manifest 文件更改时被更新。如果您编辑了一幅图片，或者修改了一个 JavaScript 函数，这些改变都不会被重新缓存。更新注释行中的日期和版本号是一种使浏览器重新缓存文件的办法。
+
+> 关于应用程序缓存的注释:
+
+请留心缓存的内容。
+
+一旦文件被缓存，则浏览器会继续展示已缓存的版本，即使您修改了服务器上的文件。为了确保浏览器更新缓存，您需要更新 manifest 文件。
+
+注释：浏览器对缓存数据的容量限制可能不太一样（某些浏览器设置的限制是每个站点 5MB）。

@@ -421,7 +421,7 @@ localStorage 方法存储的数据没有时间限制。第二天、第二周或�
 
 sessionStorage 方法针对一个 session 进行数据存储。当用户关闭浏览器窗口后，数据会被删除。
 
-```
+```javascript
 下面的例子对用户在当前 session 中访问页面的次数进行计数：
 
 <script type="text/javascript">
@@ -543,3 +543,221 @@ FALLBACK:
 一旦文件被缓存，则浏览器会继续展示已缓存的版本，即使您修改了服务器上的文件。为了确保浏览器更新缓存，您需要更新 manifest 文件。
 
 注释：浏览器对缓存数据的容量限制可能不太一样（某些浏览器设置的限制是每个站点 5MB）。
+
+## Html5 Web Workers
+
+### 什么是Web Workers?
+
+web workers 是运行在后台的javascript，不会影响页面的性能。当在Html页面中执行脚本的时候，页面是不可响应状态，直到脚本已完成。而web workers 是运行在后台的javascript，不会影响页面的性能。您可以继续做任何愿意做的事情：点击、选取内容等等，而此时 web worker 在后台运行。
+
+## 检测 Web Worker 支持
+
+在创建 web worker 之前，请检测用户的浏览器是否支持它：
+
+```javascript
+if(typeof(Worker)!=="undefined")
+{
+  // Yes! Web worker support!
+  // Some code.....
+}
+else
+{
+  // Sorry! No Web Worker support..
+}
+```
+
+## 创建 web worker 文件
+
+现在，让我们在一个外部 JavaScript 中创建我们的 web worker。
+
+在这里，我们创建了计数脚本。该脚本存储于 "demo_workers.js" 文件中：
+
+```javascript
+var i=0;
+function timedCount()
+{
+	i=i+1;
+	postMessage(i);
+	setTimeout("timedCount()",500);
+}
+timedCount();
+```
+
+以上代码中重要的部分是 *postMessage()* 方法 - 它用于向 HTML 页面传回一段消息。
+
+**注释：web worker 通常不用于如此简单的脚本，而是用于更耗费 CPU 资源的任务。**
+
+## 创建 Web Worker 对象
+
+我们已经有了 web worker 文件，现在我们需要从 HTML 页面调用它。
+
+下面的代码检测是否存在 worker，如果不存在，- 它会创建一个新的 web worker 对象，然后运行 "demo_workers.js" 中的代码：
+
+```javascript
+if(typeof(w)=="undefined")
+{
+  	w=new Worker("demo_workers.js");
+}
+```
+
+然后我们就可以从 web worker 发送和接收消息了。
+
+向 web worker 添加一个 "onmessage" 事件监听器：
+
+```javascript
+w.onmessage=function(event){
+	document.getElementById("result").innerHTML=event.data;
+};
+```
+
+当 web worker 传递消息时，会执行事件监听器中的代码。event.data 中存有来自 event.data 的数据。
+
+**终止 Web Worker**
+
+当我们创建 web worker 对象后，它会继续监听消息（即使在外部脚本完成之后）直到其被终止为止。
+
+如需终止 web worker，并释放浏览器/计算机资源，请使用 terminate() 方法：
+
+```javascript
+w.terminate();
+```
+
+完整的 Web Worker 实例代码
+
+我们已经看到了 .js 文件中的 Worker 代码。下面是 HTML 页面的代码：
+
+```javascript
+<!DOCTYPE html>
+<html>
+<body>
+	<p>Count numbers: <output id="result"></output></p>
+	<button onclick="startWorker()">Start Worker</button>
+	<button onclick="stopWorker()">Stop Worker</button>
+	<br /><br />
+<script>
+	var w;
+	function startWorker()
+	{
+		if(typeof(Worker)!=="undefined")
+		{
+  			if(typeof(w)=="undefined")
+    		{
+    			w=new Worker("demo_workers.js");
+   			}
+  			w.onmessage = function (event) {
+   				document.getElementById("result").innerHTML=event.data;
+  			};
+		}
+		else
+		{
+			document.getElementById("result").innerHTML="Sorry, your browser
+ 			does not support Web Workers...";
+		}
+	}
+	function stopWorker()
+	{
+		w.terminate();
+	}
+</script>
+</body>
+</html>
+```
+
+**Web Workers 和 DOM**
+
+由于 web worker 位于外部文件中，它们无法访问下例 JavaScript 对象：
+
+- window 对象
+- document 对象
+- parent 对象
+
+## Html 5 服务器发送事件
+
+**HTML5 服务器发送事件（server-sent event）允许网页获得来自服务器的更新。**
+
+### Server-Sent 事件 - 单向消息传递
+
+Server-Sent 事件指的是网页自动获取来自服务器的更新。以前也可能做到这一点，前提是网页不得不询问是否有可用的更新。通过服务器发送事件，更新能够自动到达。
+
+例子：Facebook/Twitter 更新、估价更新、新的博文、赛事结果等。
+
+### 接收 Server-Sent 事件通知
+
+EventSource 对象用于接收服务器发送事件通知：下面是一个实例
+
+```javascript
+var source=new EventSource("demo_sse.php");
+source.onmessage=function(event)
+{
+  document.getElementById("result").innerHTML+=event.data + "<br />";
+};
+```
+
+例子解释：
+
+- 创建一个新的 EventSource 对象，然后规定发送更新的页面的 URL（本例中是 "demo_sse.php"）
+- 每接收到一次更新，就会发生 onmessage 事件
+- 当 onmessage 事件发生时，把已接收的数据推入 id 为 "result" 的元素中
+
+**检测 Server-Sent 事件支持**
+
+在上面的 TIY 实例中，我们编写了一段额外的代码来检测服务器发送事件的浏览器支持情况：
+
+```javascript
+if(typeof(EventSource)!=="undefined")
+{
+  // Yes! Server-sent events support!
+  // Some code.....
+}
+else
+{
+  // Sorry! No server-sent events support..
+}
+```
+
+**服务器端代码实例**
+
+为了让上面的例子可以运行，您还需要能够发送数据更新的服务器（比如 PHP 和 ASP）。
+
+服务器端事件流的语法是非常简单的。把 "Content-Type" 报头设置为 "text/event-stream"。现在，您可以开始发送事件流了。
+
+### PHP 代码 (demo_sse.php)：
+
+```
+<?php
+	header('Content-Type: text/event-stream');
+	header('Cache-Control: no-cache');
+	$time = date('r');
+	echo "data: The server time is: {$time}\n\n";
+	flush();
+?>
+```
+
+### ASP 代码 (VB) (demo_sse.asp):
+
+```
+<%
+	Response.ContentType="text/event-stream"
+	Response.Expires=-1
+	Response.Write("data: " & now())
+	Response.Flush()
+%>
+```
+
+代码解释：
+
+- 把报头 "Content-Type" 设置为 "text/event-stream"
+- 规定不对页面进行缓存
+- 输出发送日期（始终以 "data: " 开头）
+- 向网页刷新输出数据
+
+## EventSource 对象
+
+在上面的例子中，我们使用 onmessage 事件来获取消息。不过还可以使用其他事件：
+
+| 事件        | 描述           |
+| --------- | ------------ |
+| onopen    | 当通往服务器的连接被打开 |
+| onmessage | 当接收到消息       |
+| onerror   | 当错误发生        |
+

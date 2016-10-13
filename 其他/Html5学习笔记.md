@@ -7,7 +7,7 @@ HTML5 是 W3C 与 WHATWG 合作的结果。
 
 WHATWG 致力于 web 表单和应用程序，而 W3C 专注于 XHTML 2.0。在 2006 年，双方决定进行合作，来创建一个新版本的 HTML。
 
-为 HTML5 建立的一些规则：
+为 HTML5 建立的一些**规则**：
 
 - 新特性应该基于 HTML、CSS、DOM 以及 JavaScript。
 - 减少对外部插件的需求（比如 Flash）
@@ -18,11 +18,11 @@ WHATWG 致力于 web 表单和应用程序，而 W3C 专注于 XHTML 2.0。在 2
 
 ## 新特性
 
-HTML5 中的一些有趣的新特性：
+HTML5 中的一些有趣的**新特性**：
 
 - 用于绘画的 canvas 元素
 - 用于媒介回放的 video 和 audio 元素
-- 对本地离线存储的更好的支持
+- **对本地离线存储的更好的支持**
 - 新的特殊内容元素，比如 article、footer、header、nav、section
 - 新的表单控件，比如 calendar、date、time、email、url、search
 
@@ -884,7 +884,7 @@ output 元素用于不同类型的输出，比如计算或脚本输出：
 
 ### HTML5 的新的表单属性
 
-本章讲解涉及 <form> 和 <input> 元素的新属性。
+本章讲解涉及 `<form>` 和 `<input>` 元素的新属性。
 
 **新的 form 属性：**
 

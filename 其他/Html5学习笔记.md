@@ -26,7 +26,7 @@ HTML5 中的一些有趣的**新特性**：
 - 新的特殊内容元素，比如 article、footer、header、nav、section
 - 新的表单控件，比如 calendar、date、time、email、url、search
 
-## Html视频
+## Html 5 视频
 
 当前，video 元素支持三种视频格式：
 
@@ -125,7 +125,7 @@ myVideo.width=420;
 </html>
 ```
 
-## Html音频
+## Html 5 音频
 
 HTML5 提供了播放音频的标准。audio 元素支持三种音频格式：
 
@@ -155,7 +155,7 @@ Your browser does not support the audio tag.
 </audio>
 ```
 
-## HTML 5 拖放
+## Html 5 拖放
 
 html中拖放是标准的一部分，任何元素都能够拖放。下面是一个简单的例子，将img拖放到指定的矩形区域。
 
@@ -876,13 +876,13 @@ keygen 元素是密钥对生成器（key-pair generator）。当提交表单时�
 
 **（3）output 元素**
 
-output 元素用于不同类型的输出，比如计算或脚本输出：
+output 元素用于不同类型的输出，比如将JavaScript的计算结果显示出来。
 
 ```HTML
 <output id="result" onforminput="resCalc()"></output>
 ```
 
-### HTML5 的新的表单属性
+### HTML5 新的表单属性
 
 本章讲解涉及 `<form>` 和 `<input>` 元素的新属性。
 
@@ -1073,3 +1073,5 @@ required 属性规定必须在提交之前填写输入域（不能为空）。
 ```HTML
 Name: <input type="text" name="usr_name" required="required" />
 ```
+# HTML 5 秘籍读书笔记
+

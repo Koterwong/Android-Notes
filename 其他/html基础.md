@@ -120,10 +120,10 @@ from表单用户收集用户的输入。from表单元素包括不同type类型�
 
 > css用于设置网页的显示效果，将网页的显示和内容分离，也是一种`解耦`的思想，html只需要把显示内容封装起来，不使用属性，用css来控制内容的显示效果。在我们需要更换网页的显示效果的时候，只需要更改css样式而不需要我们更改html代码。
 
-##### css和html的结合方式
+##### css和html结合的三种方式
 
-- 在html的标签上，提供了一个属性，`style = "css代码"`。
-- 在html的文件上，提供了一个标签，`<style type = "test/css"> css代码 </style>`，这个标签需要放到`<head></head>`中间。
+- 使用标签自带的style属性，`style = "css代码"`。
+- 使用style标签，`<style type = "test/css"> css代码 </style>`，这个标签需要放到`<head></head>`中间。
 - 引入外部文件的方式。
   - 通过`@import url ("css文件地址")`，需要注意，这种方式引入方式代码必须放到`<style>`中间。
   - 通过`<link rel="stylesheet" type="text/css" href="css文件地址">`方式引入，这种方式不需要放到`<style>`中间，放到`<head></head>`中间即可。

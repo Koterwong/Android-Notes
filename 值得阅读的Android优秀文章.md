@@ -52,6 +52,7 @@
 
 - [OKHttp源码解析](http://www.jianshu.com/p/27c1554b7fee)
 - [OkHttp3源码解析](http://www.jianshu.com/p/aad5aacd79bf)
+- [Fresco源码解析](https://github.com/desmond1121/Fresco-Source-Analysis)
 
 ### 性能优化
 

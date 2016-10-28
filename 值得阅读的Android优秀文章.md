@@ -68,6 +68,10 @@
 - [App瘦身最佳实践](http://www.jianshu.com/p/8f14679809b3)
 
 
+### Android进程
+
+- [Android进程绝杀技--forceStop](http://gityuan.com/2016/10/22/force-stop/)
+
 ### 数据库
 
 - [如果有人问你数据库的原理，叫他看这篇文章](http://blog.jobbole.com/100349/)
@@ -77,6 +81,7 @@
 - [你应该知道的Http基础知识](http://www.jianshu.com/p/e544b7a76dac)
 - [Https是如何工作的](http://blog.csdn.net/dd864140130/article/details/52598107)
 - [Gradle 完整指南（Android）](http://www.jianshu.com/p/9df3c3b6067a)
+- [重新认识AndroidStudio和Gradle,这些都是你应该知道的](http://mp.weixin.qq.com/s?__biz=MzIwNjQ1NzQxNA==&mid=2247483946&idx=1&sn=da2458e2e6cd87115adec58ac0b0d3c6&chksm=97201d03a05794150a48bf3c0586b11c355c541dcd5b0f76dcad7fd1304d080459e6564d8298&mpshare=1&scene=1&srcid=1017GVivyfq4lSBaNEpMCXJu#rd)
 
 ### 视频直播
 

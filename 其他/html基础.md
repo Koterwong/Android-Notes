@@ -168,6 +168,19 @@ from表单用户收集用户的输入。from表单元素包括不同type类型�
     }
     ```
 
+- 属性选择器，对带有指定属性的标签设置样式。属性选择器在为不带有 class 或 id 的表单设置样式时特别有用：
+
+  ```css
+  input[type="text"]
+  {
+    width:150px;
+    display:block;
+    margin-bottom:10px;
+    background-color:yellow;
+    font-family: Verdana, Arial;
+  }
+  ```
+
 ##### css盒子模型
 
 在进行布局前需要把数据封装到一块一块的区域内，这个区域的专业术语叫盒子。关于和盒子的几个属性：边框（border）、内边距（padding）、外边距（margin）。

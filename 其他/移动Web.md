@@ -9,7 +9,7 @@
 
 ### Viewport
 
-网页在渲染到手机屏幕上的时候，会预先渲染在一个固定像素的Viewport上，iphone的Viewport一般为980px，安卓的viewport差异性就比较大。手机屏幕的px的不可能有这个大，所以会通过缩放来显示这个px为980的ViewPort。需要注意的是，我们开发一般不使用默认980px的viewport，原因主要有以下几点：
+网页在渲染到手机屏幕上的时候，会预先渲染在一个固定像素的Viewport上，iphone的Viewport一般为980px，安卓的viewport差异性就比较大。手机屏幕的px的不可能有这个大（**注意iphone5的像素为320*568，iphone6的像素为375 * 627**），所以会通过缩放来显示这个px为980的ViewPort。需要注意的是，我们开发一般不使用默认980px的viewport，原因主要有以下几点：
 
 - 不同设备的viewport可能不同。
 - 页面缩放，交互不友好。

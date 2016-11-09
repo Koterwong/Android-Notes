@@ -33,7 +33,7 @@ JavaDoc：
 
 ### 提高开发效率的常用功能
 
-- attach debug ：可在快捷工具栏中找到。使开发者可以在不编辑代码的情况下。
+- attach debug ：可在快捷工具栏中找到。使开发者可以在不编辑代码的情况下惊醒debug。
 - Structurally Search ：可在全局查找每个类中的相关代码段，非常好用。可以使用按两下Shift，输入Search  Structurally 打开，然后进行全局搜索。
 - 自定义代码模版：Editer -> Live Template -> 在Class的File模板里加入即可。
 

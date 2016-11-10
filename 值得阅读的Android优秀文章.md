@@ -50,6 +50,7 @@
 
 - [React Native Android 通信原理](https://longv2go.github.io/2016/02/02/react-android-%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86.html)
 - [从Java层看React-Native通信原理](http://gold.xitu.io/post/57d4e67fda2f600059f48e11)
+- [React Native Android 从学车到补胎和成功发车经历](http://blog.csdn.net/yanbober/article/details/53071792)
 
 ### DI
 

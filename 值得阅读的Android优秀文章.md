@@ -22,6 +22,11 @@
 
 - [Androiud6.0权限管理](http://gold.xitu.io/post/57d5de3e2e958a00546a7465)
 
+### MVP &&MVVM
+
+- [Android官方架构项目之MVP + DataBinding](http://www.jianshu.com/p/9c99a4bf7c9d)
+- [google 官方mvp实例的实践之mvp-databinding-Rxjava (一)](https://jiangchunyu.github.io/2016/09/06/google-%E5%AE%98%E6%96%B9mvp%E5%AE%9E%E4%BE%8B%E7%9A%84%E5%AE%9E%E8%B7%B5%E4%B9%8Bmvp-databinding-Rxjava-%E4%B8%80/)
+
 ### 多线程技术
 
 - [浅谈Android中的任务封装](http://www.jianshu.com/p/1f797ae150ef)
@@ -52,7 +57,7 @@
 
 - [React Native Android 通信原理](https://longv2go.github.io/2016/02/02/react-android-%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86.html)
 - [从Java层看React-Native通信原理](http://gold.xitu.io/post/57d4e67fda2f600059f48e11)
--  [React Native Android 从学车到补胎和成功发车经历](http://blog.csdn.net/yanbober/article/details/53071792)
+- [React Native Android 从学车到补胎和成功发车经历](http://blog.csdn.net/yanbober/article/details/53071792)
 
 ### DI
 

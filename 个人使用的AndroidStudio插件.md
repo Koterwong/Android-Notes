@@ -7,5 +7,5 @@
 7. codota：代码搜索神器。
 8. Android Material Design icon Generator：生成Materail Design图标。
 9. [Android Studio Setting ](https://github.com/xinghongfei/android-studio-setting) ：Sublime主题的插件。
-10. ​
+10. ​ADB WIFI ：在不Root的情况下使用wifi调用应用。
 

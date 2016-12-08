@@ -26,6 +26,7 @@
 
 - [Android官方架构项目之MVP + DataBinding](http://www.jianshu.com/p/9c99a4bf7c9d)
 - [google 官方mvp实例的实践之mvp-databinding-Rxjava (一)](https://jiangchunyu.github.io/2016/09/06/google-%E5%AE%98%E6%96%B9mvp%E5%AE%9E%E4%BE%8B%E7%9A%84%E5%AE%9E%E8%B7%B5%E4%B9%8Bmvp-databinding-Rxjava-%E4%B8%80/)
+- [从零开始的Android新项目7 - Data Binding入门篇](http://blog.zhaiyifan.cn/2016/06/16/android-new-project-from-0-p7/)
 
 ### 多线程技术
 

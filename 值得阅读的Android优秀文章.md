@@ -1,3 +1,8 @@
+### 公众号文章：
+
+- [鸿洋](https://github.com/hongyangAndroid/hongyangWeixinArticles)
+- [2017年Android百大框架排行榜](http://www.cnblogs.com/jincheng-yangchaofan/articles/7018780.html)
+
 ### 基础
 
 - [Fragment全解析（一）那些年踩过的坑](http://www.jianshu.com/p/d9143a92ad94)
@@ -36,6 +41,15 @@
 
 - [Retrofit 2.0 + OkHttp 3.0 配置](https://drakeet.me/retrofit-2-0-okhttp-3-0-config)
 
+### HTTP
+
+- [关于HTTP协议，一篇就够了](http://www.cnblogs.com/ranyonsue/p/5984001.html)
+- [HTTP 协议入门](http://www.ruanyifeng.com/blog/2016/08/http.html)
+- [网络基础知识之 HTTP 协议](https://zhuanlan.zhihu.com/p/24913080)
+- [Fiddler 教程](http://www.cnblogs.com/FounderBox/p/4653588.html?utm_source=tuicool&utm_medium=referral)
+- [浅谈HTTPS以及Fiddler抓取HTTPS协议](http://www.jianshu.com/p/54dd21c50f21)
+- [抓包工具 Fiddler 相关知识总结](http://www.jianshu.com/p/4a8dae519efe)
+
 ### HotFix & Plugin
 
 - [Android插件化框架和热修复技术的资料收集和汇总](http://www.jianshu.com/p/1f797ae150ef)
@@ -59,6 +73,7 @@
 - [React Native Android 通信原理](https://longv2go.github.io/2016/02/02/react-android-%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86.html)
 - [从Java层看React-Native通信原理](http://gold.xitu.io/post/57d4e67fda2f600059f48e11)
 - [React Native Android 从学车到补胎和成功发车经历](http://blog.csdn.net/yanbober/article/details/53071792)
+- [从Android到React Native开发（一、入门）](http://www.jianshu.com/p/97692b1c451d)
 
 ### DI
 

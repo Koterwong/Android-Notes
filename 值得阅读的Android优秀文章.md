@@ -63,6 +63,7 @@
 - [Rx处理服务器请求、缓存的完美封装](http://gank.io/post/560e15be2dca930e00da1083)
 - [使用Retrofit2+OkHttp3实现缓存处理](http://werb.github.io/2016/07/29/%E4%BD%BF%E7%94%A8Retrofit2+OkHttp3%E5%AE%9E%E7%8E%B0%E7%BC%93%E5%AD%98%E5%A4%84%E7%90%86/)
 - [我的RxJava源码解读笔记](https://zhuanlan.zhihu.com/p/23617414)
+- [重新理解响应式编程](http://www.jianshu.com/p/c95e29854cb1)
 
 ### React Native
 
